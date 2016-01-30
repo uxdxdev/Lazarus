@@ -4,6 +4,7 @@
 #include <time.h>
 
 #include "cocos2d.h"
+#include "GameDefines.h"
 
 namespace bot{
 
@@ -27,7 +28,7 @@ namespace bot{
 
 	void TwitchBot::Start()
 	{		
-		m_NetManager->Init("irc.twitch.tv", "6667");
+		m_NetManager->Init(SERVER_URL, SERVER_PORT);
 		LoginToChatServer();
 		JoinChannel("JOIN #damortonx\r\n");
 	}

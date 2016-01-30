@@ -1,9 +1,10 @@
 #ifndef _TWITCHMODEL_H_
-#define _TWITCHMODEL_
+#define _TWITCHMODEL_H_
 
 
 #include "Observer.h"
 #include "TwitchPlayer.h"
+
 using namespace std;
 
 class TwitchModel : public Observer
@@ -26,6 +27,7 @@ private:
 	string name;
 	//TwitchModel();
 	//~TwitchModel();
+	
 };
 
 

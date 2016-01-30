@@ -1,10 +1,10 @@
 #ifndef __GAMESSCENE_SCENE_H__
 #define __GAMESCENE_SCENE_H__
 
-#include "Gamedefines.h"
+#include "Cursor.h"
 #include <memory>
 #include "bot\TwitchBot.h"
-#include "Cursor.h"
+
 
 class GameScene : public cocos2d::Layer
 {

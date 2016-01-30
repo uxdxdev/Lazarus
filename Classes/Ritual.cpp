@@ -1,5 +1,5 @@
 #include "Ritual.h"
-#include "GameDefines.h"
+
 
 USING_NS_CC;
 

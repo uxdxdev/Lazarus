@@ -1,6 +1,6 @@
 #include "GameScene.h"
 #include "BoardLayer.h"
-#include "Cursor.h"
+
 
 USING_NS_CC;
 
