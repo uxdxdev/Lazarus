@@ -1,7 +1,7 @@
 #ifndef _BOARD_
 #define _BOARD_
 
-#include "cocos2d.h"
+#include "Cursor.h"
 
 using namespace cocos2d;
 
@@ -14,9 +14,15 @@ public:
 	CREATE_FUNC(BoardLayer);
 
 	Size getBoardSize(){ return _spBoard->getContentSize(); }
+	void update(float dt) override;
 
 private:
 	Sprite* _spBoard;
+
+	Cursor* helixCursor;
+	Cursor* domeCursor;
+	Ritual* helixRitual;
+	Ritual* domeRitual;
 };
 
 #endif

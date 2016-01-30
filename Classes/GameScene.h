@@ -1,10 +1,10 @@
 #ifndef __GAMESSCENE_SCENE_H__
 #define __GAMESCENE_SCENE_H__
 
-#include "Gamedefines.h"
+#include "BoardLayer.h"
 #include <memory>
 #include "bot\TwitchBot.h"
-#include "Cursor.h"
+
 
 class GameScene : public cocos2d::Layer
 {
@@ -23,10 +23,9 @@ public:
 
 private:
 	std::unique_ptr<bot::TwitchBot> m_TwitchBot;
-	Cursor* helixCursor;
-	Cursor* domeCursor;
-	Ritual* helixRitual;
-	Ritual* domeRitual;
+	BoardLayer* m_pBoardLayer;
+
+	
 };
 
 #endif // __GameScene_SCENE_H__

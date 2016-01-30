@@ -71,9 +71,6 @@
     <ClInclude Include="..\Classes\bot\TwitchBot.h">
       <Filter>src\bot</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GameScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\LabRoom.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -96,6 +93,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\WorldManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
