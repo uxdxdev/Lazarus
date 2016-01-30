@@ -1,4 +1,6 @@
 #include "GameScene.h"
+#include "BoardLayer.h"
+#include "Cursor.h"
 
 USING_NS_CC;
 
@@ -29,30 +31,6 @@ bool GameScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(GameScene::menuCloseCallback, this));
-    
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
     
     auto label = Label::createWithTTF("Game Scene", "fonts/Marker Felt.ttf", 24);
     
@@ -63,24 +41,53 @@ bool GameScene::init()
     // add the label as a child to this layer
     this->addChild(label, 1);
 
-    // add "GameScene" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
 
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    //add the labroom layer to display guide lines
+	//Layer* lablayer = LabRoom::create();
+	//this->addChild(lablayer);
 
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+	BoardLayer* boardLayer = BoardLayer::create();
+	this->addChild(boardLayer);
+
+	Size boardSize = boardLayer->getBoardSize();
+	helixRitual = Ritual::create(HELIX);
+	helixRitual->setPosition(
+		(visibleSize.width - boardSize.width + helixRitual->getContentSize().width) * 0.55,
+		visibleSize.height * 0.5);
+	this->addChild(helixRitual);
+
+	domeRitual = Ritual::create(DOME);
+	domeRitual->setPosition(
+		(visibleSize.width + boardSize.width - domeRitual->getContentSize().width) * 0.48,
+		visibleSize.height * 0.5);
+	this->addChild(domeRitual);
+
+	helixCursor = Cursor::create(HELIX);
+	helixCursor->setPosition(
+		helixRitual->getPositionX() + helixRitual->getContentSize().width,
+		helixRitual->getPositionY());
+	this->addChild(helixCursor);
+
+	domeCursor = Cursor::create(DOME);
+	domeCursor->setPosition(
+		domeRitual->getPositionX() - domeRitual->getContentSize().width,
+		domeRitual->getPositionY());
+	this->addChild(domeCursor);
+	    
     
 	std::unique_ptr<bot::TwitchBot> twitchBot(new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n"));
 	m_TwitchBot = std::move(twitchBot);
 	this->scheduleUpdate();
+
     return true;
 }
 
 void GameScene::update(float dt)
 {	
 	m_TwitchBot->Update();
+
+	helixCursor->randomeMove();
+	domeCursor->randomeMove();
 }
 
 
