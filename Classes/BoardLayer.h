@@ -1,5 +1,5 @@
-#ifndef _BOARD_
-#define _BOARD_
+#ifndef _BOARDLAYER_H_
+#define _BOARDLAYER_H_
 
 #include "Cursor.h"
 

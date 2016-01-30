@@ -44,6 +44,7 @@ bool BoardLayer::init()
 		domeRitual->getPositionX() - domeRitual->getContentSize().width,
 		domeRitual->getPositionY());
 	this->addChild(domeCursor);
+
 	return true;
 }
 

@@ -1,6 +1,6 @@
 #include "GameScene.h"
 #include "BoardLayer.h"
-#include "Cursor.h"
+#include "RitualHUD.h"
 
 USING_NS_CC;
 
@@ -48,6 +48,10 @@ bool GameScene::init()
 
 	m_pBoardLayer = BoardLayer::create();
 	this->addChild(m_pBoardLayer);
+
+	RitualHUD* helixHUD = RitualHUD::create();
+	helixHUD->initDeity(HELIX);
+	this->addChild(helixHUD);
 	    
     
 	std::unique_ptr<bot::TwitchBot> twitchBot(new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n"));
