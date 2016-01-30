@@ -153,6 +153,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\bot\TwitchBot.cc" />
     <ClCompile Include="..\Classes\net\NetManager.cc" />
     <ClCompile Include="..\Classes\socket\socket.c" />
+    <ClCompile Include="..\Classes\TwitchModel.cpp" />
+    <ClCompile Include="..\Classes\TwitchPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -161,6 +163,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\BoardLayer.h" />
     <ClInclude Include="..\Classes\Cursor.h" />
     <ClInclude Include="..\Classes\GameDefines.h" />
+    <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\LabRoom.h" />
     <ClInclude Include="..\Classes\Observer.h" />
     <ClInclude Include="..\Classes\Ritual.h" />
@@ -168,6 +171,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\bot\TwitchBot.h" />
     <ClInclude Include="..\Classes\net\NetManager.h" />
     <ClInclude Include="..\Classes\socket\socket.h" />
+    <ClInclude Include="..\Classes\TwitchEvent.h" />
+    <ClInclude Include="..\Classes\TwitchModel.h" />
+    <ClInclude Include="..\Classes\TwitchPlayer.h" />
     <ClInclude Include="..\Classes\WorldManager.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

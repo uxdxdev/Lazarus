@@ -46,33 +46,8 @@ bool GameScene::init()
 	//Layer* lablayer = LabRoom::create();
 	//this->addChild(lablayer);
 
-	BoardLayer* boardLayer = BoardLayer::create();
-	this->addChild(boardLayer);
-
-	Size boardSize = boardLayer->getBoardSize();
-	helixRitual = Ritual::create(HELIX);
-	helixRitual->setPosition(
-		(visibleSize.width - boardSize.width + helixRitual->getContentSize().width) * 0.55,
-		visibleSize.height * 0.5);
-	this->addChild(helixRitual);
-
-	domeRitual = Ritual::create(DOME);
-	domeRitual->setPosition(
-		(visibleSize.width + boardSize.width - domeRitual->getContentSize().width) * 0.48,
-		visibleSize.height * 0.5);
-	this->addChild(domeRitual);
-
-	helixCursor = Cursor::create(HELIX);
-	helixCursor->setPosition(
-		helixRitual->getPositionX() + helixRitual->getContentSize().width,
-		helixRitual->getPositionY());
-	this->addChild(helixCursor);
-
-	domeCursor = Cursor::create(DOME);
-	domeCursor->setPosition(
-		domeRitual->getPositionX() - domeRitual->getContentSize().width,
-		domeRitual->getPositionY());
-	this->addChild(domeCursor);
+	m_pBoardLayer = BoardLayer::create();
+	this->addChild(m_pBoardLayer);
 	    
     
 	std::unique_ptr<bot::TwitchBot> twitchBot(new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n"));
@@ -85,9 +60,8 @@ bool GameScene::init()
 void GameScene::update(float dt)
 {	
 	m_TwitchBot->Update();
+	m_pBoardLayer->update(dt);
 
-	helixCursor->randomeMove();
-	domeCursor->randomeMove();
 }
 
 
