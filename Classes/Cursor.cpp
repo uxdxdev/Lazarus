@@ -78,6 +78,7 @@ void Cursor::move(Directions direction)
 		}
 
 		auto moveAction = MoveBy::create(0.3f * ACTION_SPEED, movement);
+		auto easeInOut = EaseInOut::create(moveAction->clone(), 2.0f);
 		auto delay = DelayTime::create(0.3f * ACTION_SPEED);
 		auto callToggleMovement = CallFunc::create(std::bind(&Cursor::toggleMovement, this));
 		auto sequence = Sequence::create(moveAction, delay, callToggleMovement, nullptr);
