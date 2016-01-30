@@ -72,7 +72,7 @@ bool GameScene::init()
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
     
-	m_TwitchBot = new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n");
+	m_TwitchBot = new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n");
 	m_TwitchBot->Start();
 	this->scheduleUpdate();
     return true;

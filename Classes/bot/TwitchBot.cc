@@ -14,6 +14,8 @@ namespace bot{
 		m_strNickname = nickname;
 		m_strUsername = username;
 		m_strPassword = password;
+		m_cSendBuffer[0] = '\0';
+		m_cRecvBuffer[0] = '\0';
 	}
 
 	TwitchBot::~TwitchBot()
@@ -24,32 +26,28 @@ namespace bot{
 	void TwitchBot::Start()
 	{		
 		m_NetManager->Init("irc.twitch.tv", "6667");
-		m_NetManager->ReadData(m_cRecvBuffer, MAX_BUFFER_SIZE);
-		CCLOG("Recv buffer");
-		CCLOG(m_cRecvBuffer);
-		CCLOG("Netmanager connected " + m_NetManager->GetState());
 		LoginToChatServer();
+
 		JoinChannel("JOIN #damortonx\r\n");
 	}
 
 	void TwitchBot::LoginToChatServer()
 	{
-		sprintf(m_cSendBuffer, "%s", m_strPassword);
+		// Send login details after connecting to the server
+		sprintf(m_cSendBuffer, "%s", m_strPassword.c_str());
 		m_NetManager->SendData(m_cSendBuffer);
 
-		sprintf(m_cSendBuffer, "%s", m_strUsername);
+		sprintf(m_cSendBuffer, "%s", m_strUsername.c_str());
 		m_NetManager->SendData(m_cSendBuffer);
 
-		sprintf(m_cSendBuffer, "%s", m_strNickname);
-		m_NetManager->SendData(m_cSendBuffer);		
+		sprintf(m_cSendBuffer, "%s", m_strNickname.c_str());
+		m_NetManager->SendData(m_cSendBuffer);				
 	}
 
 	void TwitchBot::JoinChannel(std::string channel)
 	{
-		sprintf(m_cSendBuffer, "%s", channel);
-		m_NetManager->SendData(m_cSendBuffer);	
-		CCLOG("Send buffer");
-		CCLOG(m_cSendBuffer);
+		sprintf(m_cSendBuffer, "%s", channel.c_str());
+		m_NetManager->SendData(m_cSendBuffer);			
 	}
 
 	char *TwitchBot::TimeNow()
@@ -68,7 +66,6 @@ namespace bot{
 		if (m_NetManager->GetState() == net::NetManager::CONNECTED)
 		{
 			m_NetManager->ReadData(m_cRecvBuffer, MAX_BUFFER_SIZE);
-			CCLOG(m_cRecvBuffer);
 			ProcessMsg();
 		}		
 	}
@@ -76,5 +73,19 @@ namespace bot{
 	void TwitchBot::ProcessMsg()
 	{
 		std::cout << "ProcessMsg()" << std::endl;
+
+		if (strstr(m_cRecvBuffer, "PING"))
+		{
+			sprintf(m_cSendBuffer, "%s", "PONG :tmi.twitch.tv");
+			m_NetManager->SendData(m_cSendBuffer);			
+		}
+
+		if (strstr(m_cRecvBuffer, "chant"))
+		{
+			// Create event
+			CCLOG("Hail Helix");
+		}		
+
+		m_NetManager->ClearBuffer(m_cRecvBuffer);
 	}
 }

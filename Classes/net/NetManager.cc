@@ -31,10 +31,11 @@ namespace net{
 		if (m_iSocketFileDescriptor == -1)
 		{
 			m_eState = CONNECTION_FAILED;
-			printf("InitConnection() Connection failed. Socketfd %d\n", m_iSocketFileDescriptor);
+			CCLOG("InitConnection() connection failed sfd: %d", m_iSocketFileDescriptor);			
 			return -1;
 		}
 
+		CCLOG("InitConnection() connection successful sfd: %d", m_iSocketFileDescriptor);
 		std::cout << "Init() connection successful" << std::endl;
 
 		m_eState = CONNECTED;
@@ -50,7 +51,8 @@ namespace net{
 		int bytesSents = 0;
 
 		bytesSents = Send(m_iSocketFileDescriptor, buffer, size, flags);
-
+		CCLOG("SendData() send buffer %s", buffer);
+		ClearBuffer(buffer);
 		return bytesSents;
 	}
 
@@ -60,6 +62,11 @@ namespace net{
 		int bytesRecv = 0;
 	
 		bytesRecv = Recv(m_iSocketFileDescriptor, buffer, size, flags);
+		if (strcmp(buffer, "0") != 0)
+		{
+			CCLOG("ReadData() recv buffer %s", buffer);
+			CCLOG("ReadData() bytes recv %d", bytesRecv);
+		}		
 
 		// Server shutdown connection
 		if (bytesRecv == 0 && m_eState == CONNECTED)
@@ -69,6 +76,11 @@ namespace net{
 		}
 
 		return bytesRecv;
+	}
+
+	void NetManager::ClearBuffer(char *buffer)
+	{
+		sprintf(buffer, "%s", "0");
 	}
 
 } // namespace net
