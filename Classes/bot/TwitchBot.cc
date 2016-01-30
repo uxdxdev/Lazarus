@@ -109,7 +109,7 @@ namespace bot{
 			std::size_t start = message.find("#");			
 			std::size_t end = message.find(":");
 
-			if (start != std::string::npos && end != std::string::npos)
+			if (start != std::string::npos && end != std::string::npos && end > start)
 			{
 				std::string username = message.substr(start, end - start);	
 				username[end - start - 1] = '\0';
