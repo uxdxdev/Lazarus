@@ -6,6 +6,8 @@
 #include <time.h>
 
 #include "cocos2d.h"
+#include "WorldManager.h"
+#include "TwitchEvent.h"
 
 namespace bot{
 
@@ -20,6 +22,8 @@ namespace bot{
 		m_cSendBuffer[0] = '\0';
 		m_cRecvBuffer[0] = '\0';
 
+		m_WorldManager = WorldManager::getInstance();
+		
 		Start();
 	}
 
@@ -77,6 +81,8 @@ namespace bot{
 		{
 			// Create event
 			CCLOG("Hail Helix!....or Dome, depends....");
+			
+			//m_WorldManager->notify(this, )
 		}	
 
 		if (strstr(m_cRecvBuffer, "!tower"))
@@ -119,5 +125,5 @@ namespace bot{
 
 		// Add more commands
 
-	}
+	}	
 }

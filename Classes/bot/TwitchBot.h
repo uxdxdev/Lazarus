@@ -3,13 +3,14 @@
 
 #include <memory>
 
+#include "GameDefines.h"
 #include "net\NetManager.h"
 
 #define MAX_BUFFER_SIZE 255
 
 namespace bot{
 
-	class TwitchBot{
+	class TwitchBot : public cocos2d::Node{
 	public:
 		// TwitchBot("NICK myUserName\r\n", "USER myUserName\r\n", "PASS oauth:some123numbers123\r\n")
 		TwitchBot(std::string nickname, std::string username, std::string password);
@@ -30,6 +31,7 @@ namespace bot{
 
 		std::unique_ptr<net::NetManager> m_NetManager;
 		
+		WorldManager *m_WorldManager;
 	 	char m_cSendBuffer[MAX_BUFFER_SIZE];
 		char m_cRecvBuffer[MAX_BUFFER_SIZE];
 
