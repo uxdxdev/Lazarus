@@ -9,18 +9,22 @@ class TwitchPlayer : public Observer
 {
 public:
 	static std::shared_ptr<TwitchPlayer> create();
+	static std::shared_ptr<TwitchPlayer> create(shared_ptr<string> pName, Deities pSavior);
 	//overload this later
 	virtual bool init();
 	void cleanup(){ /*this->~TwitchPlayer();*/ }
-	void setName(string nameset);
-	string getName(){ return this->name; }
-	
+	void setName(shared_ptr<string> nameset);
+	shared_ptr<string> getName(){ return this->name; }
+
+	void TwitchPlayer::setDiety(Deities pSavior);
+
 	void onNotify(cocos2d::Node* node, cocos2d::EventCustom* event);
 	TwitchPlayer();
 	~TwitchPlayer();
 
 private:
-	string name;
+	shared_ptr<string> name;
+	Deities savior;
 	//TwitchPlayer();
 	//~TwitchPlayer();
 };

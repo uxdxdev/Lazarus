@@ -20,10 +20,15 @@ public:
 	TwitchModel();
 	~TwitchModel();
 
-	vector < shared_ptr<TwitchPlayer>> helix;
-	vector < shared_ptr<TwitchPlayer>> dome;
+	
+	vector < shared_ptr<TwitchPlayer>> playerList;
+	
 
 	//method to search for player object from player name & if not found create and return player object
+	shared_ptr<TwitchPlayer> getPlayer(shared_ptr<string> pname);
+	shared_ptr<TwitchPlayer> registerPlayer(shared_ptr<string> pname, Deities saviour);
+
+	//TODO clear all players and counters
 
 private:
 	string name;
