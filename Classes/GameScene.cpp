@@ -31,11 +31,6 @@ bool GameScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-   
-
-   
-    
     
     auto label = Label::createWithTTF("Game Scene", "fonts/Marker Felt.ttf", 24);
     
@@ -45,6 +40,7 @@ bool GameScene::init()
 
     // add the label as a child to this layer
     this->addChild(label, 1);
+
 
     //add the labroom layer to display guide lines
 	//Layer* lablayer = LabRoom::create();
@@ -78,7 +74,17 @@ bool GameScene::init()
 		domeRitual->getPositionY());
 	this->addChild(domeCursor);
 	    
+    
+	std::unique_ptr<bot::TwitchBot> twitchBot(new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n"));
+	m_TwitchBot = std::move(twitchBot);
+	this->scheduleUpdate();
+
     return true;
+}
+
+void GameScene::update(float dt)
+{	
+	m_TwitchBot->Update();
 }
 
 
