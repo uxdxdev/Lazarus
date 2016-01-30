@@ -55,6 +55,8 @@ bool TwitchModel::init()
 	return true;
 }
 
+
+
 TwitchModel::TwitchModel()
 {
 

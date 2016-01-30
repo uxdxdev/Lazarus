@@ -14,10 +14,10 @@ Cursor* Cursor::create(Deities deity)
 	switch (deity)
 	{
 	case HELIX:
-		pSprite->initWithFile("cursorHelix.png");
+		pSprite->initWithFile("helixCursor.png");
 		break;
 	case DOME:
-		pSprite->initWithFile("cursorDome.png");
+		pSprite->initWithFile("domeCursor.png");
 		break;
 	default:
 		break;
