@@ -2,6 +2,9 @@
 #define __GAMESCENE_SCENE_H__
 
 #include "cocos2d.h"
+
+#include <memory>
+
 #include "bot\TwitchBot.h"
 
 class GameScene : public cocos2d::Layer
@@ -18,8 +21,9 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
+
 private:
-	bot::TwitchBot *m_TwitchBot;
+	std::unique_ptr<bot::TwitchBot> m_TwitchBot;
 };
 
 #endif // __GameScene_SCENE_H__

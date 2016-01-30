@@ -10,24 +10,25 @@ namespace bot{
 	TwitchBot::TwitchBot(std::string nickname, std::string username, std::string password)
 	{
 		CCLOG("TwitchBot()");
-		m_NetManager = new net::NetManager();
+		std::unique_ptr<net::NetManager> netManager(new net::NetManager());
+		m_NetManager = std::move(netManager);
 		m_strNickname = nickname;
 		m_strUsername = username;
 		m_strPassword = password;
 		m_cSendBuffer[0] = '\0';
 		m_cRecvBuffer[0] = '\0';
+
+		Start();
 	}
 
 	TwitchBot::~TwitchBot()
 	{
-
 	}
 
 	void TwitchBot::Start()
 	{		
 		m_NetManager->Init("irc.twitch.tv", "6667");
 		LoginToChatServer();
-
 		JoinChannel("JOIN #damortonx\r\n");
 	}
 
@@ -48,44 +49,58 @@ namespace bot{
 	{
 		sprintf(m_cSendBuffer, "%s", channel.c_str());
 		m_NetManager->SendData(m_cSendBuffer);			
-	}
-
-	char *TwitchBot::TimeNow()
-	{
-		time_t rawtime;
-		struct tm * timeinfo;
-
-		time(&rawtime);
-		timeinfo = localtime(&rawtime);
-
-		return asctime(timeinfo);
-	}
+	}	
 
 	void TwitchBot::Update()
 	{
+		m_NetManager->ReadData(m_cRecvBuffer, MAX_BUFFER_SIZE);
 		if (m_NetManager->GetState() == net::NetManager::CONNECTED)
-		{
-			m_NetManager->ReadData(m_cRecvBuffer, MAX_BUFFER_SIZE);
+		{			
 			ProcessMsg();
 		}		
 	}
 
 	void TwitchBot::ProcessMsg()
 	{
-		std::cout << "ProcessMsg()" << std::endl;
-
+		// Needed by the twitch server
 		if (strstr(m_cRecvBuffer, "PING"))
 		{
 			sprintf(m_cSendBuffer, "%s", "PONG :tmi.twitch.tv");
 			m_NetManager->SendData(m_cSendBuffer);			
 		}
 
-		if (strstr(m_cRecvBuffer, "chant"))
+		// Game commands
+		if (strstr(m_cRecvBuffer, "!chant"))
 		{
 			// Create event
-			CCLOG("Hail Helix");
-		}		
+			CCLOG("Hail Helix!....or Dome, depends....");
+		}	
 
-		m_NetManager->ClearBuffer(m_cRecvBuffer);
+		if (strstr(m_cRecvBuffer, "!tower"))
+		{
+			// Create event
+			CCLOG("BUILD DA TOWERS!!");
+		}
+
+		if (strstr(m_cRecvBuffer, "!attack"))
+		{
+			// Create event
+			CCLOG("ZAP! ZAP! ZAP!");
+		}
+
+		if (strstr(m_cRecvBuffer, "!up"))
+		{
+			// Create event
+			CCLOG("Moving target up");
+		}
+
+		if (strstr(m_cRecvBuffer, "!down"))
+		{
+			// Create event
+			CCLOG("Moving target down");
+		}
+		
+		// Add more commands
+
 	}
 }

@@ -61,6 +61,8 @@ namespace net{
 		int flags = 0;
 		int bytesRecv = 0;
 	
+		ClearBuffer(buffer);
+
 		bytesRecv = Recv(m_iSocketFileDescriptor, buffer, size, flags);
 		if (strcmp(buffer, "0") != 0)
 		{
@@ -71,6 +73,7 @@ namespace net{
 		// Server shutdown connection
 		if (bytesRecv == 0 && m_eState == CONNECTED)
 		{
+			CCLOG("Server has shutdown the connection");
 			m_eState = CONNECTION_FAILED;
 			Close(m_iSocketFileDescriptor);
 		}
@@ -81,6 +84,17 @@ namespace net{
 	void NetManager::ClearBuffer(char *buffer)
 	{
 		sprintf(buffer, "%s", "0");
+	}
+
+	char *NetManager::TimeNow()
+	{
+		time_t rawtime;
+		struct tm * timeinfo;
+
+		time(&rawtime);
+		timeinfo = localtime(&rawtime);
+
+		return asctime(timeinfo);
 	}
 
 } // namespace net

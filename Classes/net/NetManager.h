@@ -24,9 +24,11 @@ namespace net{
 
 		int ReadData(char* buffer, int size);
 
+	private:
+
 		void ClearBuffer(char *buffer);
 
-	private:
+		char *TimeNow();
 
 		int m_iSocketFileDescriptor;
 

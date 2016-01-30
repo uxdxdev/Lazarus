@@ -13,18 +13,24 @@ namespace bot{
 	public:
 		// TwitchBot("NICK myUserName\r\n", "USER myUserName\r\n", "PASS oauth:some123numbers123\r\n")
 		TwitchBot(std::string nickname, std::string username, std::string password);
+
 		~TwitchBot();
-		void Start();
-		void LoginToChatServer();
-		void JoinChannel(std::string channel);
-		char *TimeNow();
+
 		void Update();
-		void ProcessMsg();
 
 	private:
-		net::NetManager *m_NetManager;
+
+		void Start();
+
+		void LoginToChatServer();
+
+		void JoinChannel(std::string channel);
 		
-		char m_cSendBuffer[MAX_BUFFER_SIZE];
+		void ProcessMsg();
+
+		std::unique_ptr<net::NetManager> m_NetManager;
+		
+	 	char m_cSendBuffer[MAX_BUFFER_SIZE];
 		char m_cRecvBuffer[MAX_BUFFER_SIZE];
 
 		std::string m_strNickname;
