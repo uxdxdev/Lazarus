@@ -23,7 +23,7 @@ public:
 	void notify(cocos2d::Node* entity, cocos2d::EventCustom* event)
 	{
 		// Walk the array and notify each observer
-		for (int i = 0; i < m_AObservers.size; i++)
+		for (int i = 0; i < m_AObservers.size(); i++)
 		{
 			m_AObservers[i]->onNotify(entity, event);
 		}
@@ -38,7 +38,7 @@ public:
 	// Remove an observer
 	void removeObserver(Observer* observer)
 	{
-		for (int i = 0; i < m_AObservers.size; i++)
+		for (int i = 0; i < m_AObservers.size(); i++)
 		{
 			if (m_AObservers[i] == observer)
 			{
