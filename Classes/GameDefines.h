@@ -1,6 +1,6 @@
 #include "cocos2d.h"
 
-typedef struct
+typedef struct LinePointJames
 {
 	cocos2d::Vec2 start;
 	cocos2d::Vec2 end;

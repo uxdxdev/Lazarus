@@ -36,9 +36,6 @@
     <ClCompile Include="..\Classes\bot\TwitchBot.cc">
       <Filter>src\bot</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\LabRoom.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -49,6 +46,12 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Cursor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WorldManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,6 +93,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Cursor.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WorldManager.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
