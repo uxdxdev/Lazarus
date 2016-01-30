@@ -51,6 +51,12 @@
     <ClCompile Include="..\Classes\Cursor.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\WorldManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TwitchPlayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -67,9 +73,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\bot\TwitchBot.h">
       <Filter>src\bot</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameScene.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\LabRoom.h">
       <Filter>src</Filter>
@@ -90,6 +93,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Cursor.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WorldManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TwitchPlayer.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
