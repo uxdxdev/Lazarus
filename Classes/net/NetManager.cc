@@ -39,7 +39,6 @@ int NetManager::Init(std::string hostname, std::string service)
 
 int NetManager::SendData(char* buffer)
 {
-	m_SendBuffer = buffer;
 	size_t size = strlen(buffer) + 1;
 	int flags = 0;
 	int bytesSents = 0;
@@ -51,12 +50,17 @@ int NetManager::SendData(char* buffer)
 
 int NetManager::ReadData(char* buffer, int size)
 {
-	m_ReadBuffer = buffer;
 	int flags = 0;
 	int bytesRecv = 0;
 	
 	bytesRecv = Recv(m_iSocketFileDescriptor, buffer, size, flags);
 	
+	// Server shutdown connection
+	if (bytesRecv == 0 && m_eState == CONNECTED)
+	{
+		m_eState = CONNECTION_FAILED;
+	}
+
 	return bytesRecv;
 }
 

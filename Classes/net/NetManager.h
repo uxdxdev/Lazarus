@@ -5,8 +5,6 @@
 
 namespace net{
 
-#define MAX_BUFFER_SIZE 13
-
 class NetManager {
 public:
 
@@ -23,7 +21,7 @@ public:
 
 	int SendData(char* buffer);
 
-	int ReadData(char* buffer, int size = MAX_BUFFER_SIZE);
+	int ReadData(char* buffer, int size);
 	
 private:
 
