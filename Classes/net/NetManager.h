@@ -14,6 +14,7 @@ namespace net{
 		};
 
 		NetManager();
+		~NetManager();
 
 		int Init(std::string hostname, std::string service);
 
