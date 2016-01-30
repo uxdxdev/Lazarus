@@ -22,7 +22,7 @@ namespace bot{
 		void ProcessMsg();
 
 	private:
-		std::unique_ptr<net::NetManager> m_NetManager;
+		net::NetManager *m_NetManager;
 		
 		char m_cSendBuffer[MAX_BUFFER_SIZE];
 		char m_cRecvBuffer[MAX_BUFFER_SIZE];

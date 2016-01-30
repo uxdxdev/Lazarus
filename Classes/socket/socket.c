@@ -194,9 +194,9 @@ int Select(int maxFileDescriptorsPlus1, fd_set *readFileDescriptorSet, fd_set *w
 	return(n);		/* can return 0 on timeout */
 }
 
-ssize_t Read(int fileDescriptor, void *buffer, size_t numberOfBytes)
+SSIZE_T Read(int fileDescriptor, void *buffer, size_t numberOfBytes)
 {
-	ssize_t n;
+	SSIZE_T n;
 	if ( (n = read(fileDescriptor, buffer, numberOfBytes)) == -1)
 	{
 		perror("Error in Read()");

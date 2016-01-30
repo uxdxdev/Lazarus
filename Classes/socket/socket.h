@@ -43,9 +43,9 @@ SOFTWARE.
 #pragma comment(lib,"ws2_32.lib")
 
 typedef int socklen_t;  
-typedef int ssize_t;
+//typedef int ssize_t;
 
-#define closesocket close
+#define close closesocket
 
 #else
     
@@ -92,7 +92,7 @@ void Connect(int socketFileDescriptor, const struct sockaddr* socketAddress, soc
 
 int Select(int maxFileDescriptorsPlus1, fd_set *readFileDescriptorSet, fd_set *writeFileDescriptorSet, fd_set *exceptFileDescriptorSet, struct timeval *timeout);
 
-ssize_t Read(int fileDescriptor, void *buffer, size_t numberOfBytes);
+SSIZE_T Read(int fileDescriptor, void *buffer, size_t numberOfBytes);
 
 void Write(int fileDescriptor, void *buffer, size_t numberOfBytes);
 

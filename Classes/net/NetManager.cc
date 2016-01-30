@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "socket/socket.h" // libsocket
+#include "cocos2d.h"
 
 namespace net{
 
@@ -59,8 +60,6 @@ namespace net{
 		int bytesRecv = 0;
 	
 		bytesRecv = Recv(m_iSocketFileDescriptor, buffer, size, flags);
-	
-		std::cout << buffer << std::endl;
 
 		// Server shutdown connection
 		if (bytesRecv == 0 && m_eState == CONNECTED)
