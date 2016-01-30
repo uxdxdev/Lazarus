@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "GameDefines.h"
+#include "WorldManager.h"
 #include "net\NetManager.h"
 
 #define MAX_BUFFER_SIZE 255
