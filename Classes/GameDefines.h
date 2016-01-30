@@ -23,6 +23,12 @@ typedef enum e_Deities {
 
 
 typedef struct topbar{
+
+	/*topbar(int acurrent, int amax, Deities asaviour){
+		current = acurrent;
+		amax = max;
+		saviour = asaviour;
+	}*/
 	unsigned int current;
 	unsigned int max;
 	Deities saviour;
@@ -35,3 +41,18 @@ typedef enum e_Directions {
 	LEFT,
 	RIGHT
 } Directions;
+
+typedef enum e_TwitchEvents {
+	
+	SPAWNEVENT,
+	TOWEREVENT,
+	CHANTEVENT,
+	ZAPEVENT,
+	UPEVENT,
+	DOWNEVENT,
+	LEFTEVENT,
+	RIGHTEVENT,
+	PRAISEHELIX, //register helix
+	PRAISEDOME   //register dome
+
+} TwitchEventType;

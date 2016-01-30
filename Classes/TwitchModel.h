@@ -23,10 +23,18 @@ public:
 	vector < shared_ptr<TwitchPlayer>> helix;
 	vector < shared_ptr<TwitchPlayer>> dome;
 
+	//method to search for player object from player name & if not found create and return player object
+
 private:
 	string name;
-	//TwitchModel();
-	//~TwitchModel();
+	topbar chantBarHelix;
+	topbar spawnBarHelix;
+	topbar towerBarHelix;
+	topbar ritualBarHelix;
+	topbar chantBarDome;
+	topbar spawnBarDome;
+	topbar towerBarDome;
+	topbar ritualBarDome;
 	
 };
 

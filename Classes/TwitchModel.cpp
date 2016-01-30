@@ -24,6 +24,8 @@ void TwitchModel::onNotify(cocos2d::Node* node, cocos2d::EventCustom* event){
 
 bool TwitchModel::init()
 {
+	//chantBarDome
+	//chantBarHelix.current = 
 
 
 	return true;

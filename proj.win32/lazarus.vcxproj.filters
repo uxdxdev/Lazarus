@@ -37,7 +37,12 @@
     <ClCompile Include="..\Classes\socket\socket.c">
       <Filter>socket</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\TwitchModel.cpp" />
+    <ClCompile Include="..\Classes\TwitchModel.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TwitchEvent.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h">
@@ -82,9 +87,13 @@
     <ClInclude Include="..\Classes\socket\socket.h">
       <Filter>socket</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\TwitchEvent.h" />
-    <ClInclude Include="..\Classes\TwitchModel.h" />
     <ClInclude Include="..\Classes\GameScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TwitchModel.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TwitchEvent.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

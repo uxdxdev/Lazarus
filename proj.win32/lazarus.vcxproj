@@ -153,6 +153,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\bot\TwitchBot.cc" />
     <ClCompile Include="..\Classes\net\NetManager.cc" />
     <ClCompile Include="..\Classes\socket\socket.c" />
+    <ClCompile Include="..\Classes\TwitchEvent.cpp" />
     <ClCompile Include="..\Classes\TwitchModel.cpp" />
     <ClCompile Include="..\Classes\TwitchPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldManager.cpp" />
