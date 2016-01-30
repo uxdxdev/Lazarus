@@ -5,35 +5,33 @@
 
 namespace net{
 
-class NetManager {
-public:
+	class NetManager {
+	public:
 
-	enum State{
-		CONNECTED,
-		CONNECTION_FAILED,
-	};
+		enum State{
+			CONNECTED,
+			CONNECTION_FAILED,
+		};
 
-	NetManager();
+		NetManager();
 
-	int Init(std::string hostname, std::string service);
+		int Init(std::string hostname, std::string service);
 
-	State GetState(){ return m_eState; }
+		State GetState(){ return m_eState; }
 
-	int SendData(char* buffer);
+		int SendData(char* buffer);
 
-	int ReadData(char* buffer, int size);
+		int ReadData(char* buffer, int size);
 	
-private:
+	private:
 
-	void CleanUp();
+		int m_iSocketFileDescriptor;
 
-	int m_iSocketFileDescriptor;
+		State m_eState;
 
-	State m_eState;
-
-	std::string m_strHostname;
-	std::string m_strService;
-};
+		std::string m_strHostname;
+		std::string m_strService;
+	};
 
 }
 
