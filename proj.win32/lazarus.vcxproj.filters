@@ -1,45 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
-      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\net">
-      <UniqueIdentifier>{428f33e0-46be-40ff-873a-9227037cf081}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\socket">
-      <UniqueIdentifier>{d562c8ea-fe7d-4635-a131-cf6721a6b9c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\bot">
-      <UniqueIdentifier>{5daa0854-bb54-4ff4-9547-06e1ecedc9ee}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\net\NetManager.cc">
-      <Filter>src\net</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\socket\socket.c">
-      <Filter>src\socket</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\bot\TwitchBot.cc">
-      <Filter>src\bot</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LabRoom.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Ritual.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\BoardLayer.cpp">
@@ -51,39 +13,33 @@
     <ClCompile Include="..\Classes\GameScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LabRoom.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ritual.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TwitchPlayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\WorldManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\bot\TwitchBot.cc">
+      <Filter>bot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\NetManager.cc">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\socket\socket.c">
+      <Filter>socket</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>win32</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\net\NetManager.h">
-      <Filter>src\net</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\socket\socket.h">
-      <Filter>src\socket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\bot\TwitchBot.h">
-      <Filter>src\bot</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LabRoom.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameDefines.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Observer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Subject.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Ritual.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\BoardLayer.h">
@@ -92,16 +48,58 @@
     <ClInclude Include="..\Classes\Cursor.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\GameDefines.h">
+    <ClInclude Include="..\Classes\LabRoom.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Observer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ritual.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Subject.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TwitchPlayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\WorldManager.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameScene.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\bot\TwitchBot.h">
+      <Filter>bot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetManager.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\socket.h">
+      <Filter>socket</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{ecc75056-68be-44fb-92da-262b2ec7e0e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bot">
+      <UniqueIdentifier>{c768bec9-d99d-4ce0-9105-13c8ee429409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{00b8dc39-ea2f-446b-97f1-c85ce0e8c887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="socket">
+      <UniqueIdentifier>{f4f9acce-0882-44f8-a74a-d9c28e15665d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
+      <Filter>src</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>
