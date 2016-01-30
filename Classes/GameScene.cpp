@@ -50,25 +50,25 @@ bool GameScene::init()
 	this->addChild(boardLayer);
 
 	Size boardSize = boardLayer->getBoardSize();
-	Ritual* helixRitual = Ritual::create(HELIX);
+	helixRitual = Ritual::create(HELIX);
 	helixRitual->setPosition(
 		(visibleSize.width - boardSize.width + helixRitual->getContentSize().width) * 0.55,
 		visibleSize.height * 0.5);
 	this->addChild(helixRitual);
 
-	Ritual* domeRitual = Ritual::create(DOME);
+	domeRitual = Ritual::create(DOME);
 	domeRitual->setPosition(
 		(visibleSize.width + boardSize.width - domeRitual->getContentSize().width) * 0.48,
 		visibleSize.height * 0.5);
 	this->addChild(domeRitual);
 
-	Cursor* helixCursor = Cursor::create(HELIX);
+	helixCursor = Cursor::create(HELIX);
 	helixCursor->setPosition(
 		helixRitual->getPositionX() + helixRitual->getContentSize().width,
 		helixRitual->getPositionY());
 	this->addChild(helixCursor);
 
-	Cursor* domeCursor = Cursor::create(DOME);
+	domeCursor = Cursor::create(DOME);
 	domeCursor->setPosition(
 		domeRitual->getPositionX() - domeRitual->getContentSize().width,
 		domeRitual->getPositionY());
@@ -85,6 +85,9 @@ bool GameScene::init()
 void GameScene::update(float dt)
 {	
 	m_TwitchBot->Update();
+
+	helixCursor->randomeMove();
+	domeCursor->randomeMove();
 }
 
 

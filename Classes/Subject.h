@@ -44,7 +44,7 @@ public:
 			{
 				m_AObservers.erase(m_AObservers.begin() + i);
 			}
-		}
+		} 
 	}
 
 };
