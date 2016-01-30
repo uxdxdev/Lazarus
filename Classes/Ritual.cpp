@@ -1,4 +1,7 @@
 #include "Ritual.h"
+#include "GameDefines.h"
+
+USING_NS_CC;
 
 Ritual::Ritual(){}
 
@@ -41,6 +44,12 @@ Ritual* Ritual::create(Deities deity)
 void Ritual::initOptions()
 {
 	// do things here like setTag(), setPosition(), any custom logic.
+	auto rotateCW = RotateBy::create(0.50f * ACTION_SPEED, 40.0f);
+	auto rotateCCW = rotateCW->reverse();
+	auto wobble = Sequence::create(rotateCW, rotateCCW, rotateCCW->clone(), rotateCW->clone(), nullptr);
+
+	this->runAction(RepeatForever::create(wobble));
+
 }
 
 void Ritual::addEvents()
