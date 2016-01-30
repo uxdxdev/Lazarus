@@ -1,7 +1,7 @@
 #ifndef _TWITCHMODEL_H_
 #define _TWITCHMODEL_
 
-#include "GameDefines.h"
+
 #include "Observer.h"
 #include "TwitchPlayer.h"
 using namespace std;

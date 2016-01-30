@@ -57,6 +57,9 @@
     <ClCompile Include="..\Classes\TwitchPlayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\TwitchModel.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -99,6 +102,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\TwitchPlayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TwitchModel.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TwitchEvent.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
