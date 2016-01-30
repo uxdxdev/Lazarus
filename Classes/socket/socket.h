@@ -28,8 +28,6 @@ SOFTWARE.
 #ifndef INCLUDES_SOCKETS_H_
 #define INCLUDES_SOCKETS_H_
 
-#include "socket_Export.h"
-
 #ifdef WIN32
 
 #ifndef _WIN32_WINNT
@@ -83,51 +81,42 @@ enum eAppType{
 #ifdef __cplusplus
 extern "C" {
 #endif
-// Socket() creates a socket based on the family, type,
-// and protocol parameters passed in. Errors are also handled
-// if the call to socket fails.
-int socket_EXPORT Socket(int family, int type, int protocol);
 
-// Populates an Address object with information relative to the ipAddress given as a parameter.
-// The port number and address family are also set in the Address object.
-void socket_EXPORT Address(int family, struct Address* address, char* ipAddress, int portNumber);
+int Socket(int family, int type, int protocol);
 
-// Facilitates IPv4 and IPv6 addressing compatibility and handles any errors that may occur.
-int socket_EXPORT Connection(const char *address, const char *service, int type /* Client or Server */, int protocol /* UDP or TCP */);
+int  Connection(const char *address, const char *service, int type /* Client or Server */, int protocol /* UDP or TCP */);
 
-// Accept incoming client connections
-int socket_EXPORT Accept(int iListenSocketFileDescriptor, struct Address *address);
+int Accept(int iListenSocketFileDescriptor, struct Address *address);
 
-// Attempts to connect to the peer address, on success will write to the socket file descriptor passed
-// in as a parameter. Connect will also handle any errors that occur during the connection attempt.
-void socket_EXPORT Connect(int socketFileDescriptor, const struct sockaddr* socketAddress, socklen_t socketSize);
+void Connect(int socketFileDescriptor, const struct sockaddr* socketAddress, socklen_t socketSize);
 
-// Select wraps the select function call and handles any errors that may occur.
-// The Select wrapper function needs the max number of file descriptors,
-// the read set of descriptors, the write set, and the time interval to wait before
-// returning from the function. Select will multiplex I/O from many s
-int socket_EXPORT Select(int maxFileDescriptorsPlus1, fd_set *readFileDescriptorSet, fd_set *writeFileDescriptorSet, fd_set *exceptFileDescriptorSet, struct timeval *timeout);
+int Select(int maxFileDescriptorsPlus1, fd_set *readFileDescriptorSet, fd_set *writeFileDescriptorSet, fd_set *exceptFileDescriptorSet, struct timeval *timeout);
 
-// Read
-ssize_t socket_EXPORT Read(int fileDescriptor, void *buffer, size_t numberOfBytes);
-void socket_EXPORT Write(int fileDescriptor, void *buffer, size_t numberOfBytes);
-void socket_EXPORT Shutdown(int fileDescriptor, int shutdownOption);
-int socket_EXPORT Max(int x, int y);
-void socket_EXPORT Bind(int socketFileDescriptor, const struct sockaddr* socketAddress, socklen_t socketSize);
-void socket_EXPORT Listen(int socketFileDescriptor, int maxListenQSize);
-void socket_EXPORT MultiplexIO(FILE* fp, int socketFileDescriptor);
+ssize_t Read(int fileDescriptor, void *buffer, size_t numberOfBytes);
 
-int socket_EXPORT Send(int socketFileDescriptor, char *message, size_t size, int flags);
+void Write(int fileDescriptor, void *buffer, size_t numberOfBytes);
 
-int  socket_EXPORT SendTo(int socketFileDescriptor, char *message, size_t size, int flags, struct sockaddr *sender, socklen_t sendsize);
+void Shutdown(int fileDescriptor, int shutdownOption);
 
-int socket_EXPORT Recv(int socketFileDescriptor, char *message, size_t size, int flags);
+int Max(int x, int y);
 
-int socket_EXPORT ReceiveFrom(int socketFileDescriptor, char *message, int bufferSize, int flags, struct sockaddr *sender, socklen_t *sendsize);
+void Bind(int socketFileDescriptor, const struct sockaddr* socketAddress, socklen_t socketSize);
 
-int socket_EXPORT SetNonBlocking(int socketFileDescriptor);
+void Listen(int socketFileDescriptor, int maxListenQSize);
 
-int socket_EXPORT Close(int socketFileDescriptor);
+void MultiplexIO(FILE* fp, int socketFileDescriptor);
+
+int Send(int socketFileDescriptor, char *message, size_t size, int flags);
+
+int SendTo(int socketFileDescriptor, char *message, size_t size, int flags, struct sockaddr *sender, socklen_t sendsize);
+
+int Recv(int socketFileDescriptor, char *message, size_t size, int flags);
+
+int ReceiveFrom(int socketFileDescriptor, char *message, int bufferSize, int flags, struct sockaddr *sender, socklen_t *sendsize);
+
+int SetNonBlocking(int socketFileDescriptor);
+
+int Close(int socketFileDescriptor);
 
 #ifdef __cplusplus
 }

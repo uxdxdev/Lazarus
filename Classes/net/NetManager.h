@@ -15,16 +15,6 @@ public:
 		CONNECTION_FAILED,
 	};
 
-	enum PacketCode{
-		GAMEWORLD,
-		PATH,
-		NODE,
-		END,
-		EMPTY,
-		CELL_BLOCKED,
-		CELL_OPEN
-	};
-
 	NetManager();
 
 	int Init(std::string hostname, std::string service);
@@ -45,9 +35,6 @@ private:
 
 	std::string m_strHostname;
 	std::string m_strService;
-
-	char* m_SendBuffer;
-	char* m_ReadBuffer;
 };
 
 }
