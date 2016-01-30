@@ -32,7 +32,7 @@ bool LabRoom::init()
 
 	//create some drawing points to be displayed on screen
 	//NW to NE
-	LinePoint line1;
+	LinePointJames line1;
 	line1.start = CCPoint(0, _screen.height*0.5);
 	line1.end = CCPoint(_screen.width, _screen.height*0.5);
 	//changing to red
@@ -40,7 +40,7 @@ bool LabRoom::init()
 	line1.a = 1.0f;
 
 	//N to S
-	LinePoint line2;
+	LinePointJames line2;
 	line2.start = CCPoint(_screen.width  * 0.5, 0);
 	line2.end = CCPoint(_screen.width *0.5, _screen.height);
 	line2.r = 1.0f;
@@ -56,28 +56,28 @@ bool LabRoom::init()
 	//draw blue box 
 	//4 lines at quater quadrands of the screen
 	//top left to top right
-	LinePoint blueboxTLTR;
+	LinePointJames blueboxTLTR;
 	blueboxTLTR.start = CCPoint(_screen.width *0.25, _screen.height * 0.25);
 	blueboxTLTR.end = CCPoint(_screen.width *0.75, _screen.height * 0.25);
 	blueboxTLTR.b = 1.0f;
 	blueboxTLTR.a = 1.0f;
 
 	//top right to bottom right
-	LinePoint blueboxTRBR;
+	LinePointJames blueboxTRBR;
 	blueboxTRBR.start = CCPoint(_screen.width *0.75, _screen.height * 0.25);
 	blueboxTRBR.end = CCPoint(_screen.width *0.75, _screen.height * 0.75);
 	blueboxTRBR.b = 1.0f;
 	blueboxTRBR.a = 1.0f;
 
 	//bottom right to bottom left
-	LinePoint blueboxBRBL;
+	LinePointJames blueboxBRBL;
 	blueboxBRBL.start = CCPoint(_screen.width *0.75, _screen.height * 0.75);
 	blueboxBRBL.end = CCPoint(_screen.width *0.25, _screen.height * 0.75);
 	blueboxBRBL.b = 1.0f;
 	blueboxBRBL.a = 1.0f;
 
 	//bottom left to top left
-	LinePoint blueboxBLTL;
+	LinePointJames blueboxBLTL;
 	blueboxBLTL.start = CCPoint(_screen.width *0.25, _screen.height * 0.75);
 	blueboxBLTL.end = CCPoint(_screen.width *0.25, _screen.height * 0.25);
 	blueboxBLTL.b = 1.0f;

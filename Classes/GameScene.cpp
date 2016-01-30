@@ -1,5 +1,7 @@
 #include "GameScene.h"
 #include "LabRoom.h"
+#include "Board.h"
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -45,8 +47,11 @@ bool GameScene::init()
     this->addChild(label, 1);
 
     //add the labroom layer to display guide lines
-	Layer* lablayer = LabRoom::create();
-	this->addChild(lablayer);
+	//Layer* lablayer = LabRoom::create();
+	//this->addChild(lablayer);
+
+	Board* boardLayer = Board::create();
+	this->addChild(boardLayer);
     
     return true;
 }

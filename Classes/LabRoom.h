@@ -26,7 +26,7 @@ public:
 private:
 	virtual void onDrawPrimitives(const kmMat4 &transform, bool transformUpdated);
 	CustomCommand _customCommand;
-	std::vector<LinePoint> drawingPoints;
+	std::vector<LinePointJames> drawingPoints;
 };
 
 
