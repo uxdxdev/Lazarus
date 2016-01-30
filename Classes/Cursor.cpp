@@ -1,5 +1,5 @@
 #include "Cursor.h"
-#include "GameDefines.h"
+
 
 USING_NS_CC;
 

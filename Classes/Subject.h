@@ -9,8 +9,11 @@ Subject contains an array of registered observers
 @date	17.4.15
 */
 //Includes
-#include "Observer.h"
+
 #include <vector>
+
+#include "Observer.h"
+#include "TwitchEvent.h"
 
 class Subject
 {
@@ -20,12 +23,12 @@ private:
 
 public:
 
-	void notify(cocos2d::Node* entity, cocos2d::EventCustom* event)
+	void notify(std::shared_ptr<TwitchEvent> tEvent)
 	{
 		// Walk the array and notify each observer
 		for (int i = 0; i < m_AObservers.size(); i++)
 		{
-			m_AObservers[i]->onNotify(entity, event);
+			m_AObservers[i]->onNotify(tEvent);
 		}
 	}
 

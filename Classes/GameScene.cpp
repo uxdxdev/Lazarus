@@ -1,13 +1,13 @@
 #include "GameScene.h"
 #include "BoardLayer.h"
-#include "Cursor.h"
+
 
 USING_NS_CC;
 
-Scene* GameScene::createScene()
+cocos2d::Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+	auto scene = cocos2d::Scene::create();
     
     // 'layer' is an autorelease object
     auto layer = GameScene::create();

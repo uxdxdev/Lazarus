@@ -11,7 +11,7 @@
 
 namespace bot{
 
-	class TwitchBot : public cocos2d::Node{
+	class TwitchBot{
 	public:
 		// TwitchBot("NICK myUserName\r\n", "USER myUserName\r\n", "PASS oauth:some123numbers123\r\n")
 		TwitchBot(std::string nickname, std::string username, std::string password);

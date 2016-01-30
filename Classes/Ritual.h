@@ -1,12 +1,8 @@
 #ifndef _RITUAL_
 #define _RITUAL_
 
-#include "cocos2d.h"
+#include "GameDefines.h"
 
-typedef enum e_Deities {
-	HELIX,
-	DOME
-} Deities;
 
 class Ritual : public cocos2d::Sprite
 {

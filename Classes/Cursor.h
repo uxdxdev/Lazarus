@@ -3,12 +3,7 @@
 
 #include "Ritual.h"
 
-typedef enum e_Directions {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
-} Directions;
+
 
 class Cursor : public cocos2d::Sprite
 {

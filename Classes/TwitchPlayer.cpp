@@ -16,7 +16,7 @@ std::shared_ptr<TwitchPlayer> TwitchPlayer::create()
 }
 
 
-void TwitchPlayer::onNotify(cocos2d::Node* node, cocos2d::EventCustom* event){
+void TwitchPlayer::onNotify(std::shared_ptr<TwitchEvent> tEvent){
 
 }
 

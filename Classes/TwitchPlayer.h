@@ -3,6 +3,8 @@
 
 #include "GameDefines.h"
 #include "Observer.h"
+#include "TwitchEvent.h"
+
 using namespace std;
 
 class TwitchPlayer : public Observer
@@ -15,7 +17,7 @@ public:
 	void setName(string nameset);
 	string getName(){ return this->name; }
 	
-	void onNotify(cocos2d::Node* node, cocos2d::EventCustom* event);
+	void onNotify(std::shared_ptr<TwitchEvent> tEvent);
 	TwitchPlayer();
 	~TwitchPlayer();
 

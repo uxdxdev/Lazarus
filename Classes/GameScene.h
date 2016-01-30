@@ -2,6 +2,7 @@
 #define __GAMESCENE_SCENE_H__
 
 #include "BoardLayer.h"
+#include "Cursor.h"
 #include <memory>
 #include "bot\TwitchBot.h"
 
