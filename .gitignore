@@ -102,3 +102,5 @@ proj.win32/Release.*/
 # proj.win8.1-universal
 
 # others
+#binary
+proj.win32/lazarus.v12.suo 
