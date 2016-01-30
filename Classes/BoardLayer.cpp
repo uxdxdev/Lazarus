@@ -1,8 +1,8 @@
-#include "Board.h"
+#include "BoardLayer.h"
 
 USING_NS_CC;
 
-bool Board::init()
+bool BoardLayer::init()
 {
 	//////////////////////////////
 	// 1. super init first

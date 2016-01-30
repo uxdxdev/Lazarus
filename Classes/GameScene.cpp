@@ -1,6 +1,6 @@
 #include "GameScene.h"
-#include "LabRoom.h"
-#include "Board.h"
+#include "BoardLayer.h"
+#include "Cursor.h"
 
 USING_NS_CC;
 
@@ -50,9 +50,34 @@ bool GameScene::init()
 	//Layer* lablayer = LabRoom::create();
 	//this->addChild(lablayer);
 
-	Board* boardLayer = Board::create();
+	BoardLayer* boardLayer = BoardLayer::create();
 	this->addChild(boardLayer);
-    
+
+	Size boardSize = boardLayer->getBoardSize();
+	Ritual* helixRitual = Ritual::create(HELIX);
+	helixRitual->setPosition(
+		(visibleSize.width - boardSize.width + helixRitual->getContentSize().width) * 0.55,
+		visibleSize.height * 0.5);
+	this->addChild(helixRitual);
+
+	Ritual* domeRitual = Ritual::create(DOME);
+	domeRitual->setPosition(
+		(visibleSize.width + boardSize.width - domeRitual->getContentSize().width) * 0.48,
+		visibleSize.height * 0.5);
+	this->addChild(domeRitual);
+
+	Cursor* helixCursor = Cursor::create(HELIX);
+	helixCursor->setPosition(
+		helixRitual->getPositionX() + helixRitual->getContentSize().width,
+		helixRitual->getPositionY());
+	this->addChild(helixCursor);
+
+	Cursor* domeCursor = Cursor::create(DOME);
+	domeCursor->setPosition(
+		domeRitual->getPositionX() - domeRitual->getContentSize().width,
+		domeRitual->getPositionY());
+	this->addChild(domeCursor);
+	    
     return true;
 }
 

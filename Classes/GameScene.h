@@ -1,7 +1,7 @@
 #ifndef __GAMESSCENE_SCENE_H__
 #define __GAMESCENE_SCENE_H__
 
-#include "cocos2d.h"
+#include "Gamedefines.h"
 
 class GameScene : public cocos2d::Layer
 {
