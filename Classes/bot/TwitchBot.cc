@@ -1,5 +1,7 @@
 #include "bot/TwitchBot.h"
 
+#include <cstring>
+
 #include <iostream>
 #include <time.h>
 
@@ -29,6 +31,7 @@ namespace bot{
 	void TwitchBot::Start()
 	{		
 		m_NetManager->Init(SERVER_URL, SERVER_PORT);
+		m_NetManager->Init("localhost", "27000");
 		LoginToChatServer();
 		JoinChannel("JOIN #damortonx\r\n");
 	}
@@ -69,7 +72,7 @@ namespace bot{
 			sprintf(m_cSendBuffer, "%s", "PONG :tmi.twitch.tv");
 			m_NetManager->SendData(m_cSendBuffer);			
 		}
-
+		
 		// Game commands
 		if (strstr(m_cRecvBuffer, "!chant"))
 		{
@@ -101,6 +104,20 @@ namespace bot{
 			CCLOG("Moving target down");
 		}
 		
+		if (strcmp(m_cRecvBuffer, "0") != 0)
+		{
+			std::string message(m_cRecvBuffer);
+			std::size_t start = message.find(":");			
+			std::size_t end = message.find("!");
+
+			if (start != std::string::npos && end != std::string::npos && end > start)
+			{
+				std::string username = message.substr(start + 1, end - start);	
+				username[end - start - 1] = '\0';
+				CCLOG("Username : %s", username.c_str());
+			}			
+		}		
+
 		// Add more commands
 
 	}
