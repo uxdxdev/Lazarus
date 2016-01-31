@@ -15,6 +15,7 @@ public:
 	void initOptions();
 
 	void addEvents();
+	void setDeity(Deities deity);
 
 	void move(Directions direction);
 	void MoveTarget(Directions direction);
@@ -22,9 +23,11 @@ public:
 	void randomeMove();
 	void toggleMovement() { m_bMoving = true; }
 	bool isMoving() { return m_bMoving; }
+	bool canMove(Directions direction);
 
 private:
 	bool m_bMoving;
+	Deities m_deity;
 
 };
 

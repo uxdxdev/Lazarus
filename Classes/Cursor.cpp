@@ -45,6 +45,12 @@ void Cursor::initOptions()
 {
 	// do things here like setTag(), setPosition(), any custom logic.
 	m_bMoving = false;
+
+}
+
+void Cursor::setDeity(Deities deity)
+{
+	m_deity = deity;
 }
 
 void Cursor::addEvents()
@@ -55,59 +61,98 @@ void Cursor::addEvents()
 void Cursor::move(Directions direction) 
 {
 	// apply a movement action only if cursor has finished moving
-	
-	Vec2 movement = Vec2(0, 0);
-
-	switch (direction)
+	if (canMove(direction))
 	{
-	case UP:
-		movement.y = CURSOR_DISPLACEMENT;
-		break;
-	case DOWN:
-		movement.y = -CURSOR_DISPLACEMENT;
-		break;
-	case LEFT:
-		movement.x = -CURSOR_DISPLACEMENT;
-		break;
-	case RIGHT:
-		movement.x = CURSOR_DISPLACEMENT;
-		break;
-	default:
-		CCLOG("Cursor::move switch statement defaulted here!");
-		break;
+		Vec2 movement = Vec2(0, 0);
+
+		switch (direction)
+		{
+		case UP:
+			movement.y = CURSOR_DISPLACEMENT;
+			break;
+		case DOWN:
+			movement.y = -CURSOR_DISPLACEMENT;
+			break;
+		case LEFT:
+			movement.x = -CURSOR_DISPLACEMENT;
+			break;
+		case RIGHT:
+			movement.x = CURSOR_DISPLACEMENT;
+			break;
+		default:
+			CCLOG("Cursor::move switch statement defaulted here!");
+			break;
+		}
+
+
+		auto moveAction = MoveBy::create(0.3f * ACTION_SPEED, movement);
+		auto easeInOut = EaseInOut::create(moveAction->clone(), 2.0f);
+		auto delay = DelayTime::create(0.3f * ACTION_SPEED);
+		auto callToggleMovement = CallFunc::create(std::bind(&Cursor::toggleMovement, this));
+		auto sequence = Sequence::create(easeInOut, delay, callToggleMovement, nullptr);
+
+		this->runAction(sequence);
 	}
-
-
-	auto moveAction = MoveBy::create(0.3f * ACTION_SPEED, movement);
-	auto easeInOut = EaseInOut::create(moveAction->clone(), 2.0f);
-	auto delay = DelayTime::create(0.3f * ACTION_SPEED);
-	auto callToggleMovement = CallFunc::create(std::bind(&Cursor::toggleMovement, this));
-	auto sequence = Sequence::create(easeInOut, delay, callToggleMovement, nullptr);
-
-	this->runAction(sequence);
 	
 }
 
 void Cursor::MoveTarget(Directions direction)
 {
+		switch (direction)
+		{
+		case UP:
+			this->setPosition(Vec2(this->getPositionX(), this->getPositionY() + CURSOR_DISPLACEMENT));
+			break;
+		case DOWN:
+			this->setPosition(Vec2(this->getPositionX(), this->getPositionY() - CURSOR_DISPLACEMENT));
+			break;
+		case LEFT:
+			this->setPosition(Vec2(this->getPositionX() - CURSOR_DISPLACEMENT, this->getPositionY()));
+			break;
+		case RIGHT:
+			this->setPosition(Vec2(this->getPositionX() + CURSOR_DISPLACEMENT, this->getPositionY()));
+			break;
+		default:
+			CCLOG("Cursor::move switch statement defaulted here!");
+			break;
+		}
+}
+
+bool Cursor::canMove(Directions direction)
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	bool result = true;
 	switch (direction)
 	{
 	case UP:
-		this->setPosition(Vec2(this->getPositionX(), this->getPositionY() + CURSOR_DISPLACEMENT));
+		if ((this->getPositionY() + this->getContentSize().height * 0.5 + CURSOR_DISPLACEMENT) > visibleSize.height)
+			result = false;
 		break;
 	case DOWN:
-		this->setPosition(Vec2(this->getPositionX(), this->getPositionY() - CURSOR_DISPLACEMENT));
+		if ((this->getPositionY() - this->getContentSize().height * 0.5 - CURSOR_DISPLACEMENT) < 0)
+			result = false;
 		break;
 	case LEFT:
-		this->setPosition(Vec2(this->getPositionX() - CURSOR_DISPLACEMENT, this->getPositionY()));
+		if (m_deity == HELIX)
+			if ((this->getPositionX() - this->getContentSize().width * 0.5 - CURSOR_DISPLACEMENT) < (visibleSize.width - visibleSize.height) * 0.5)
+				result = false;
+		if (m_deity == DOME)
+			if ((this->getPositionX() - this->getContentSize().width * 0.5 - CURSOR_DISPLACEMENT) < visibleSize.width * 0.5)
+				result = false;
 		break;
 	case RIGHT:
-		this->setPosition(Vec2(this->getPositionX() + CURSOR_DISPLACEMENT, this->getPositionY()));
+		if (m_deity == HELIX)
+			if ((this->getPositionX() + this->getContentSize().width * 0.5 + CURSOR_DISPLACEMENT) > visibleSize.width * 0.5)
+				result = false;
+		if (m_deity == DOME)
+			if ((this->getPositionX() - this->getContentSize().width * 0.5 - CURSOR_DISPLACEMENT) > (visibleSize.width + visibleSize.height) * 0.5)
+				result = false;
 		break;
 	default:
-		CCLOG("Cursor::move switch statement defaulted here!");
 		break;
 	}
+
+	return result;
 }
 
 void Cursor::randomeMove()
