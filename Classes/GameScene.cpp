@@ -70,8 +70,8 @@ void GameScene::update(float dt)
 {	
 	m_TwitchBot->Update();
 	m_pBoardLayer->update(dt);
-	m_pDomeHUD->update(dt);
-	m_pHelixHUD->update(dt);
+	//m_pDomeHUD->update(dt);
+	//m_pHelixHUD->update(dt);
 }
 
 
