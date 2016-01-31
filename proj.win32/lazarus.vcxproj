@@ -158,6 +158,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\TwitchModel.cpp" />
     <ClCompile Include="..\Classes\TwitchPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldManager.cpp" />
+    <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +180,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\TwitchModel.h" />
     <ClInclude Include="..\Classes\TwitchPlayer.h" />
     <ClInclude Include="..\Classes\WorldManager.h" />
+    <ClInclude Include="Creature.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

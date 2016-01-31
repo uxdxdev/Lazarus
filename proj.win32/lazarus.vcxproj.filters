@@ -46,6 +46,12 @@
     <ClCompile Include="..\Classes\socket\socket.c">
       <Filter>socket</Filter>
     </ClCompile>
+    <ClCompile Include="Creature.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h">
@@ -101,6 +107,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\socket\socket.h">
       <Filter>socket</Filter>
+    </ClInclude>
+    <ClInclude Include="Creature.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
