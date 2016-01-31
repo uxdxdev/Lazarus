@@ -5,6 +5,7 @@
 #include "Subject.h"
 #include "TwitchModel.h"
 #include "GameObject.h"
+#include "BoardLayer.h"
 
 
 using namespace std;
@@ -21,12 +22,15 @@ public:
 	//Clean up all resources created by the World Manager
 	void cleanUp();
 	std::shared_ptr<TwitchModel> getTwitchModel();
-
+	void updateGameObjects(float dt);
 	//register gameobject with world manager
 	void registerWithWorldManger(std::shared_ptr<gameobject::GameObject> pGameObj){ gameObjects.push_back(pGameObj); }
 	vector<std::shared_ptr<gameobject::GameObject>> getGameObects(){
 		return gameObjects;
 	}
+
+	void SetGameBoard(BoardLayer *board);
+	BoardLayer *GetGameBoard();
 
 private:
 	//Private singleton ctor and dtor
@@ -37,7 +41,7 @@ private:
 	static WorldManager* m_Instance;
 	std::shared_ptr<TwitchModel> m_tModel;
 	vector<std::shared_ptr<gameobject::GameObject>> gameObjects;
-
+	BoardLayer *m_GameBoard;
 
 };
 #endif

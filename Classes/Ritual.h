@@ -2,20 +2,19 @@
 #define _RITUAL_
 
 #include "GameDefines.h"
+#include "GameObject.h"
 
+namespace ritual{
 
-class Ritual : public cocos2d::Sprite
-{
-public:
-	Ritual();
-	~Ritual();
-	static Ritual* create(Deities deity);
+	class Ritual : public gameobject::GameObject
+	{
+	public:
+		Ritual(Deities deity);		
+		void Init();
+		void Ritual::Animate();
+		void ApplyDamage(float damage);
+		void Update(float dt);
+	};
 
-	void initOptions();
-
-	void addEvents();
-private:
-
-};
-
+}
 #endif // _RITUAL_

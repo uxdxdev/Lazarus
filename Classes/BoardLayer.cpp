@@ -1,6 +1,8 @@
 #include "BoardLayer.h"
 
 #include "WorldManager.h"
+#include "Creature.h"
+#include "Tower.h"
 
 USING_NS_CC;
 
@@ -23,30 +25,30 @@ bool BoardLayer::init()
 	}
 
 	Size boardSize =_spBoard->getContentSize();
-	helixRitual = Ritual::create(HELIX);
-	helixRitual->setPosition(
-		(screenSize.width - boardSize.width + helixRitual->getContentSize().width) * 0.55,
+	std::unique_ptr<ritual::Ritual> helixRitual (new ritual::Ritual(HELIX));
+	helixRitual->GetSprite()->setPosition(
+		(screenSize.width - boardSize.width + helixRitual->GetSprite()->getContentSize().width) * 0.55,
 		screenSize.height * 0.5);
-	this->addChild(helixRitual);
+	this->addChild(helixRitual->GetSprite());
 
-	domeRitual = Ritual::create(DOME);
-	domeRitual->setPosition(
-		(screenSize.width + boardSize.width - domeRitual->getContentSize().width) * 0.48,
+	std::unique_ptr<ritual::Ritual> domeRitual (new ritual::Ritual(DOME));
+	domeRitual->GetSprite()->setPosition(
+		(screenSize.width + boardSize.width - domeRitual->GetSprite()->getContentSize().width) * 0.48,
 		screenSize.height * 0.5);
-	this->addChild(domeRitual);
+	this->addChild(domeRitual->GetSprite());
 
 	helixCursor = Cursor::create(HELIX);
 	helixCursor->setDeity(HELIX);
 	helixCursor->setPosition(
-		helixRitual->getPositionX() + helixRitual->getContentSize().width,
-		helixRitual->getPositionY());
+		helixRitual->GetSprite()->getPositionX() + helixRitual->GetSprite()->getContentSize().width,
+		helixRitual->GetSprite()->getPositionY());
 	this->addChild(helixCursor);
 
 	domeCursor = Cursor::create(DOME);
 	domeCursor->setDeity(DOME);
 	domeCursor->setPosition(
-		domeRitual->getPositionX() - domeRitual->getContentSize().width,
-		domeRitual->getPositionY());
+		domeRitual->GetSprite()->getPositionX() - domeRitual->GetSprite()->getContentSize().width,
+		domeRitual->GetSprite()->getPositionY());
 	this->addChild(domeCursor);
 
 
@@ -201,21 +203,35 @@ void BoardLayer::spawnDome()
 {
 	//get cursor position
 	//spawn dome 
+	std::shared_ptr<Creature> spawned(new Creature(Deities::DOME));
+	spawned->GetSprite()->setPosition(domeCursor->getPosition());
+	this->addChild(spawned->GetSprite());
 	//register with world manager
+	WorldManager::getInstance()->registerWithWorldManger(spawned);
 
 }
 void BoardLayer::spawnHelix()
 {
 	//get cursor position
 	//spawn helix
+	std::shared_ptr<Creature> spawned(new Creature(Deities::HELIX));
+	spawned->GetSprite()->setPosition(helixCursor->getPosition());
+	this->addChild(spawned->GetSprite());
 	//register with world manager
+	WorldManager::getInstance()->registerWithWorldManger(spawned);
+	
 }
 
 void BoardLayer::TowerDome()
 {
 	//get cursor position
 	//place tower dome 
+	/*std::shared_ptr<tower::Tower> spawned(new tower::Tower(Deities::DOME));
+	spawned->GetSprite()->setPosition(domeCursor->getPosition());
+	this->addChild(spawned->GetSprite());
 	//register with world manager
+	WorldManager::getInstance()->registerWithWorldManger(spawned);*/
+	
 }
 
 void BoardLayer::TowerHelix()
@@ -231,5 +247,9 @@ void BoardLayer::update(float dt)
 	//domeCursor->randomeMove();
 
 	//collisions
+	WorldManager::getInstance()->updateGameObjects(dt);
+	
+
+
 
 }

@@ -37,8 +37,8 @@ private:
 
 	Cursor* helixCursor;
 	Cursor* domeCursor;
-	Ritual* helixRitual;
-	Ritual* domeRitual;
+	std::unique_ptr<ritual::Ritual> helixRitual;
+	std::unique_ptr<ritual::Ritual> domeRitual;
 	
 };
 

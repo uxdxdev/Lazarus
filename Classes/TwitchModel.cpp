@@ -53,7 +53,8 @@ shared_ptr<TwitchPlayer> TwitchModel::getPlayer(shared_ptr<string> pname){
 
 	for (int i = 0; i < playerList.size(); i++)
 	{
-		if (playerList.at(i)->getName()->compare(pname->c_str()))
+		string playerString = *(playerList.at(i)->getName());
+		if (playerString == *pname)
 		{
 			return playerList.at(i);
 		}

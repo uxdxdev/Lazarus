@@ -19,9 +19,6 @@
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Ritual.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\RitualHUD.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -47,6 +44,18 @@
       <Filter>socket</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameObject.cpp">
+<<<<<<< HEAD
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ritual.cpp">
+=======
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Creature.cpp">
+>>>>>>> c0ab6f38bc33f0d75d03ea027f878a8c9be02aba
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -73,9 +82,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Observer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Ritual.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\RitualHUD.h">
@@ -106,6 +112,18 @@
       <Filter>socket</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameObject.h">
+<<<<<<< HEAD
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ritual.h">
+=======
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Creature.h">
+>>>>>>> c0ab6f38bc33f0d75d03ea027f878a8c9be02aba
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
