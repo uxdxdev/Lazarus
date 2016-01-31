@@ -50,13 +50,13 @@ bool GameScene::init()
 	m_pBoardLayer = BoardLayer::create();
 	this->addChild(m_pBoardLayer);
 
-	RitualHUD* helixHUD = RitualHUD::create();
-	helixHUD->initDeity(HELIX);
-	this->addChild(helixHUD);
+	m_pHelixHUD = RitualHUD::create();
+	m_pHelixHUD->initDeity(HELIX);
+	this->addChild(m_pHelixHUD);
 
-	RitualHUD* domeHUD = RitualHUD::create();
-	domeHUD->initDeity(DOME);
-	this->addChild(domeHUD);
+	m_pDomeHUD = RitualHUD::create();
+	m_pDomeHUD->initDeity(DOME);
+	this->addChild(m_pDomeHUD);
 	    
     
 	std::unique_ptr<bot::TwitchBot> twitchBot(new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n"));
@@ -70,7 +70,8 @@ void GameScene::update(float dt)
 {	
 	m_TwitchBot->Update();
 	m_pBoardLayer->update(dt);
-
+	m_pDomeHUD->update(dt);
+	m_pHelixHUD->update(dt);
 }
 
 
