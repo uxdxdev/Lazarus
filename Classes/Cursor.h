@@ -25,6 +25,8 @@ public:
 	bool isMoving() { return m_bMoving; }
 	bool canMove(Directions direction);
 
+	void attack();
+
 private:
 	bool m_bMoving;
 	Deities m_deity;

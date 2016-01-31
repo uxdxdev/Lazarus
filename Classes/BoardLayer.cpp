@@ -61,9 +61,8 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 	if (tEvent->GetEventType() == TwitchEventType::ZAPEVENT)
 	{
 		CCLOG("BoardLayer ZAPPY ZAP by %s", tEvent->GetUsername()->c_str());
-		auto sequence = cocos2d::Sequence::create(cocos2d::ScaleTo::create(0.5f, 2.0f), cocos2d::ScaleTo::create(0.5f, 1.0f), nullptr);
-		helixCursor->runAction(sequence);	
-		domeCursor->runAction(sequence->clone());
+		helixCursor->attack();	
+		domeCursor->attack();
 	}
 
 	if (tEvent->GetEventType() == TwitchEventType::UPEVENT)
