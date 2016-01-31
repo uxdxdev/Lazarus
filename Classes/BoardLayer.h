@@ -26,6 +26,9 @@ public:
 
 	void spawnHelix();
 	void spawnDome();
+	void TowerHelix();
+	void TowerDome();
+
 
 	
 
