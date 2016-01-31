@@ -51,13 +51,16 @@ bool BoardLayer::init()
 
 
 	// Register with the world manager
+	
 	WorldManager::getInstance()->addObserver(this);
+
 
 	return true;
 }
 
 void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 {
+	WorldManager* worldMan = WorldManager::getInstance();
 	if (tEvent->GetEventType() == TwitchEventType::ZAPEVENT)
 	{
 		CCLOG("BoardLayer ZAPPY ZAP by %s", tEvent->GetUsername()->c_str());
@@ -162,10 +165,71 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 			}
 		}
 	}
+	if (tEvent->GetEventType() == TwitchEventType::SPAWNEVENT)
+	{
+		//check if the spawn bar is full
+		shared_ptr<TwitchPlayer> twitchp = worldMan->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (twitchp != NULL){
+			if (twitchp->getDeity() == Deities::HELIX)
+			{
+				spawnDome();
+			}
+			else if(twitchp->getDeity() == Deities::DOME)
+			{
+				spawnHelix();
+			}
+		}
+	}
+	if (tEvent->GetEventType() == TwitchEventType::TOWEREVENT)
+	{
+		//check if the spawn bar is full
+		shared_ptr<TwitchPlayer> twitchp = worldMan->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (twitchp != NULL){
+			if (twitchp->getDeity() == Deities::HELIX)
+			{
+				TowerHelix();
+			}
+			else if (twitchp->getDeity() == Deities::DOME)
+			{
+				TowerDome();
+			}
+		}
+	}
+}
+
+void BoardLayer::spawnDome()
+{
+	//get cursor position
+	//spawn dome 
+	//register with world manager
+
+}
+void BoardLayer::spawnHelix()
+{
+	//get cursor position
+	//spawn helix
+	//register with world manager
+}
+
+void BoardLayer::TowerDome()
+{
+	//get cursor position
+	//place tower dome 
+	//register with world manager
+}
+
+void BoardLayer::TowerHelix()
+{
+	//get cursor position
+	//place tower helix
+	//register with world manager
 }
 
 void BoardLayer::update(float dt)
 {
 	//helixCursor->randomeMove();
 	//domeCursor->randomeMove();
+
+	//collisions
+
 }

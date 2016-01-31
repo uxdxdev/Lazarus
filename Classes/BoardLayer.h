@@ -7,6 +7,7 @@
 #include "TwitchEvent.h"
 #include "Cursor.h"
 
+
 using namespace cocos2d;
 
 class BoardLayer : public cocos2d::Layer, public Observer
@@ -23,6 +24,14 @@ public:
 
 	void update(float dt) override;
 
+	void spawnHelix();
+	void spawnDome();
+	void TowerHelix();
+	void TowerDome();
+
+
+	
+
 private:
 	Sprite* _spBoard;
 
@@ -30,6 +39,7 @@ private:
 	Cursor* domeCursor;
 	Ritual* helixRitual;
 	Ritual* domeRitual;
+	
 };
 
 #endif

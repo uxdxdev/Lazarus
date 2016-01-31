@@ -27,7 +27,7 @@ void TwitchModel::onNotify(std::shared_ptr<TwitchEvent> tEvent){
 		CCLOG("Player : %s registered with HELIX", newEvent->GetUsername()->c_str());
 		break;
 	case PRAISEDOME:
-		registerPlayer(newEvent->GetUsername(), Deities::HELIX);
+		registerPlayer(newEvent->GetUsername(), Deities::DOME);
 		CCLOG("Player : %s registered with DOME", newEvent->GetUsername()->c_str());
 		break;
 	case CHANTEVENT:
