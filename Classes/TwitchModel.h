@@ -16,7 +16,7 @@ public:
 	void cleanup(){ /*this->~TwitchPlayer();*/ }
 	
 
-	void onNotify(cocos2d::Node* node, cocos2d::EventCustom* event);
+	void onNotify(std::shared_ptr<TwitchEvent> tEvent);
 	TwitchModel();
 	~TwitchModel();
 

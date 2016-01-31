@@ -1,5 +1,7 @@
 #include "BoardLayer.h"
 
+#include "WorldManager.h"
+
 USING_NS_CC;
 
 bool BoardLayer::init()
@@ -45,11 +47,49 @@ bool BoardLayer::init()
 		domeRitual->getPositionY());
 	this->addChild(domeCursor);
 
+
+	// Register with the world manager
+	WorldManager::getInstance()->addObserver(this);
+
 	return true;
+}
+
+void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
+{
+	if (tEvent->GetEventType() == TwitchEventType::ZAPEVENT)
+	{
+		CCLOG("BoardLayer ZAPPY ZAP by %s", tEvent->GetUsername().c_str());
+		auto sequence = cocos2d::Sequence::create(cocos2d::ScaleTo::create(0.5f, 2.0f), cocos2d::ScaleTo::create(0.5f, 1.0f), nullptr);
+		helixCursor->runAction(sequence);			
+	}
+
+	if (tEvent->GetEventType() == TwitchEventType::UPEVENT)
+	{
+		CCLOG("BoardLayer TARGET Up by %s", tEvent->GetUsername().c_str());
+		helixCursor->move(Directions::UP);
+	}
+
+	if (tEvent->GetEventType() == TwitchEventType::DOWNEVENT)
+	{
+		CCLOG("BoardLayer TARGET Down by %s", tEvent->GetUsername().c_str());
+		helixCursor->move(Directions::DOWN);
+	}
+
+	if (tEvent->GetEventType() == TwitchEventType::LEFTEVENT)
+	{
+		CCLOG("BoardLayer TARGET Left by %s", tEvent->GetUsername().c_str());
+		helixCursor->move(Directions::LEFT);
+	}
+
+	if (tEvent->GetEventType() == TwitchEventType::RIGHTEVENT)
+	{
+		CCLOG("BoardLayer TARGET Right by %s", tEvent->GetUsername().c_str());
+		helixCursor->move(Directions::RIGHT);
+	}
 }
 
 void BoardLayer::update(float dt)
 {
-	helixCursor->randomeMove();
-	domeCursor->randomeMove();
+	//helixCursor->randomeMove();
+	//domeCursor->randomeMove();
 }

@@ -5,6 +5,7 @@
 #ifndef _TWITCHEVENT_H_
 #define _TWITCHEVENT_H_
 
+#include <memory>
 
 #include "GameDefines.h"
 
@@ -14,21 +15,18 @@ class TwitchEvent
 {
 public:
 	static std::shared_ptr<TwitchEvent> create();
-	static std::shared_ptr<TwitchEvent> create(TwitchEventType tevent, std::shared_ptr<string>* pName);
+	static std::shared_ptr<TwitchEvent> create(TwitchEventType tevent, std::string username);
 	//overload this later
 	virtual bool init();
 	void cleanup(){ }
-	
-
-
+	TwitchEventType GetEventType();
+	std::string GetUsername();
 	TwitchEvent();
 	~TwitchEvent();
 
-	
-
 private:
 	TwitchEventType eventType;
-	std::shared_ptr<string>* playerName;
+	std::string playerName;
 };
 
 #endif

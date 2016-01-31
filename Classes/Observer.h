@@ -7,7 +7,11 @@ Observer interface for design pattern implementation
 @date	17.4.15
 */
 // Includes
-#include "cocos2d.h"
+
+#include <memory>
+
+#include "GameDefines.h"
+#include "TwitchEvent.h"
 
 class Observer
 {
@@ -19,7 +23,7 @@ public:
 	@param Node* pointer to a cocos2d node
 	@param EventCustom* pointer to a cocos2d custom event
 	*/
-	virtual void onNotify(cocos2d::Node* node, cocos2d::EventCustom* event) = 0;
+	virtual void onNotify(std::shared_ptr<TwitchEvent> tEvent) = 0;
 };
 
 #endif
