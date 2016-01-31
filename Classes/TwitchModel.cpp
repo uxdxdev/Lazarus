@@ -80,29 +80,29 @@ shared_ptr<TwitchPlayer> TwitchModel::registerPlayer(shared_ptr<string> pname, D
 
 void TwitchModel::initBars()
 {
-	zapBarHelix.current = 0;
-	zapBarHelix.max = 50;
+	zapBarHelix.current = 0.f;
+	zapBarHelix.max = 50.f;
 	zapBarHelix.saviour = HELIX;
-	spawnBarHelix.current = 0;
-	spawnBarHelix.max = 20;
+	spawnBarHelix.current = 0.f;
+	spawnBarHelix.max = 20.f;
 	spawnBarHelix.saviour = HELIX;
-	towerBarHelix.current = 0;
-	towerBarHelix.max = 20;
+	towerBarHelix.current = 0.f;
+	towerBarHelix.max = 20.f;
 	towerBarHelix.saviour = HELIX;
-	ritualBarHelix.current = 0;
-	ritualBarHelix.max = 500;
+	ritualBarHelix.current = 0.f;
+	ritualBarHelix.max = 500.f;
 	ritualBarHelix.saviour = HELIX;
-	zapBarDome.current = 0;
-	zapBarDome.max = 50;
+	zapBarDome.current = 0.f;
+	zapBarDome.max = 50.f;
 	zapBarDome.saviour = DOME;
-	spawnBarDome.current = 0;
-	spawnBarDome.max = 20;
+	spawnBarDome.current = 0.f;
+	spawnBarDome.max = 20.f;
 	spawnBarDome.saviour = DOME;
-	towerBarDome.current = 0;
-	towerBarDome.max = 20;
+	towerBarDome.current = 0.f;
+	towerBarDome.max = 20.f;
 	towerBarDome.saviour = DOME;
-	ritualBarDome.current = 0;
-	ritualBarDome.max = 500;
+	ritualBarDome.current = 0.f;
+	ritualBarDome.max = 500.f;
 	ritualBarDome.saviour = DOME;
 
 }
@@ -186,25 +186,25 @@ void TwitchModel::increaseBar(TwitchEventType teType, shared_ptr<string> pname)
 			if (teType == CHANTEVENT) {
 				if (ritualBarHelix.current < ritualBarHelix.max) {
 					ritualBarHelix.current += ritualBarHelix.max * 0.1;
-					CCLOG("ritualBar Helix up! now %i", ritualBarHelix.current);
+					CCLOG("ritualBar Helix up! now %f", ritualBarHelix.current);
 				}
 			}
 			if (teType == TOWEREVENT) {
 				if (towerBarHelix.current < towerBarHelix.max) {
 					towerBarHelix.current += towerBarHelix.max * 0.1;
-					CCLOG("towerbar Helix up! now %i", towerBarHelix.current);
+					CCLOG("towerbar Helix up! now %f", towerBarHelix.current);
 				}
 			}
 			if (teType == ZAPEVENT) {
 				if (zapBarHelix.current < zapBarHelix.max) {
 					zapBarHelix.current += zapBarHelix.max * 0.1;
-					CCLOG("zapBar Helix up!");
+					CCLOG("zapBar Helix up! now %f", zapBarHelix.current);
 				}
 			}
 			if (teType == SPAWNEVENT) {
 				if (spawnBarHelix.current < spawnBarHelix.max) {
 					spawnBarHelix.current += spawnBarHelix.max * 0.1;
-					CCLOG("spawnBar Helix up!");
+					CCLOG("spawnBar Helix up! now %f", spawnBarHelix.current);
 				}
 			}
 			break;
