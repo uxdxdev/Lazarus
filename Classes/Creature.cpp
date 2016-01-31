@@ -31,7 +31,6 @@ void Creature::Init()
 			m_pTarget = WorldManager::getInstance()->getGameObects()[i].get();
 		}
 	}
-	MoveToTarget();
 }
 
 void Creature::Update(float dt)

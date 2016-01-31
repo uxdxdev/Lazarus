@@ -14,23 +14,22 @@ namespace gameobject{
 				
 		virtual void Update(float dt){}
 
-		void SetDeity(Deities deity);
-		Deities GetDeity();
+		virtual void SetDeity(Deities deity);
+		virtual Deities GetDeity();
 
-		cocos2d::Sprite *GetSprite();
+		virtual cocos2d::Sprite *GetSprite();
 		
-		void SetHealth(float health);
-		float GetHealth();
+		virtual void SetHealth(float health);
+		virtual float GetHealth();
 
-		void SetTarget(GameObject *target);
-		GameObject *GetTarget();
-		cocos2d::Sprite *m_Sprite;
-		
+		virtual void SetTarget(GameObject *target);
+		virtual GameObject *GetTarget();
+
 	protected:
 		float m_fHealth;
 		Deities m_Deity;
 		float m_fAttackValue;
-		
+		cocos2d::Sprite *m_Sprite;
 		GameObject *m_pTarget;
 	};
 
