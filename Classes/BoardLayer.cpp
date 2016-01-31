@@ -110,19 +110,56 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 			}
 		}
 	}
+	if (tEvent->GetEventType() == TwitchEventType::TOWEREVENT)
+	{
+		//check if the spawn bar is full
+		shared_ptr<TwitchPlayer> twitchp = worldMan->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (twitchp != NULL){
+			if (twitchp->getDiety() == Deities::HELIX)
+			{
+				TowerHelix();
+			}
+			else if (twitchp->getDiety() == Deities::DOME)
+			{
+				TowerDome();
+			}
+		}
+	}
 }
 
 void BoardLayer::spawnDome()
 {
+	//get cursor position
+	//spawn dome 
+	//register with world manager
 
 }
 void BoardLayer::spawnHelix()
 {
+	//get cursor position
+	//spawn helix
+	//register with world manager
+}
 
+void BoardLayer::TowerDome()
+{
+	//get cursor position
+	//place tower dome 
+	//register with world manager
+}
+
+void BoardLayer::TowerHelix()
+{
+	//get cursor position
+	//place tower helix
+	//register with world manager
 }
 
 void BoardLayer::update(float dt)
 {
 	//helixCursor->randomeMove();
 	//domeCursor->randomeMove();
+
+	//collisions
+
 }
