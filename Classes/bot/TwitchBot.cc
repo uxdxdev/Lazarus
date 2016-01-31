@@ -34,8 +34,8 @@ namespace bot{
 
 	void TwitchBot::Start()
 	{		
-		//m_NetManager->Init(SERVER_URL, SERVER_PORT);
-		m_NetManager->Init("localhost", "27000");
+		m_NetManager->Init(SERVER_URL, SERVER_PORT);
+		//m_NetManager->Init("localhost", "27000");
 		LoginToChatServer();
 		JoinChannel("JOIN #damortonx\r\n");
 	}
@@ -74,7 +74,7 @@ namespace bot{
 		// Needed by the twitch server
 		if (strstr(m_cRecvBuffer, "PING"))
 		{
-			sprintf(m_cSendBuffer, "%s", "PONG :tmi.twitch.tv");
+			sprintf(m_cSendBuffer, "%s", "PONG :tmi.twitch.tv\r\n");
 			m_NetManager->SendData(m_cSendBuffer);			
 		}
 
