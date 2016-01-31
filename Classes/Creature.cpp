@@ -5,11 +5,11 @@ Creature::Creature(Deities deity)
 	m_Deity = deity;
 	if (deity == HELIX)
 	{
-		m_Sprite = cocos2d::Sprite::create("creatureHelix.png");
+		m_Sprite = cocos2d::Sprite::create("helixCreature.png");
 	}
 	else
 	{
-		m_Sprite = cocos2d::Sprite::create("creatureDome.png");
+		m_Sprite = cocos2d::Sprite::create("domeCreature.png");
 	}
 
 	m_fHealth = 100;
