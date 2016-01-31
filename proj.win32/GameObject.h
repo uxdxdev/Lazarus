@@ -9,7 +9,7 @@ namespace gameobject{
 	public:
 		virtual ~GameObject(){}
 		virtual void ApplyDamage(float damage);
-		virtual void Attack(GameObject *target, float value);
+		virtual void Attack(GameObject *target);
 		Deities GetDeity();
 	private:
 		float m_fHealth;

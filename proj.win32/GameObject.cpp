@@ -11,8 +11,8 @@ namespace gameobject{
 		return m_Deity;
 	}
 
-	void GameObject::Attack(GameObject *target, float value)
+	void GameObject::Attack(GameObject *target)
 	{
-		target->ApplyDamage(value);
+		target->ApplyDamage(m_fAttackValue);
 	}
 }
