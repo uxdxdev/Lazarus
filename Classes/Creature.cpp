@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include "WorldManager.h"
 
 Creature::Creature(Deities deity)
 {
@@ -19,7 +20,18 @@ Creature::Creature(Deities deity)
 
 void Creature::Init()
 {
-
+	float smallestDistance = 0;	
+	for (int i = 0; i < WorldManager::getInstance()->getGameObects().size(); i++)
+	{
+		float xDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionX() - this->m_Sprite->getPositionX());
+		float yDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionY() - this->m_Sprite->getPositionY());
+		float distance = sqrt((xDist * xDist) + (yDist * yDist));
+		if (distance < smallestDistance)
+		{
+			m_pTarget = WorldManager::getInstance()->getGameObects()[i].get();
+		}
+	}
+	MoveToTarget();
 }
 
 void Creature::Update(float dt)

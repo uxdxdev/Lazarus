@@ -12,7 +12,8 @@ namespace gameobject{
 		virtual ~GameObject(){}
 		virtual void ApplyDamage(float damage);
 				
-		virtual void update(float dt){}
+		virtual void Update(float dt){}
+
 		void SetDeity(Deities deity);
 		Deities GetDeity();
 
