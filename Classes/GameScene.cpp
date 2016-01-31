@@ -53,6 +53,10 @@ bool GameScene::init()
 	RitualHUD* helixHUD = RitualHUD::create();
 	helixHUD->initDeity(HELIX);
 	this->addChild(helixHUD);
+
+	RitualHUD* domeHUD = RitualHUD::create();
+	domeHUD->initDeity(DOME);
+	this->addChild(domeHUD);
 	    
     
 	std::unique_ptr<bot::TwitchBot> twitchBot(new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n"));

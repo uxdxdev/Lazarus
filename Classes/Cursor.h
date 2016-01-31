@@ -22,7 +22,7 @@ public:
 	bool isMoving() { return m_bMoving; }
 
 private:
-	bool m_bMoving = false;
+	bool m_bMoving;
 
 };
 

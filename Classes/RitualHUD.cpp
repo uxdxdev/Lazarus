@@ -44,8 +44,21 @@ void RitualHUD::initDeity(Deities deity)
 	_lpZapLabel = Label::createWithTTF("Zap", "fonts/Marker Felt.ttf", 20);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+	float topBarPosX = 0.0f;
+
+	switch (deity)
+	{
+	case HELIX:
+		topBarPosX = visibleSize.width * 0.01 + _spRitualBar->getContentSize().width * 0.5;
+		break;
+	case DOME:
+		topBarPosX = visibleSize.width * 0.99 - _spRitualBar->getContentSize().width * 0.5;
+		break;
+	default:
+		break;
+	}
 	_spRitualBar->setPosition(
-		visibleSize.width * 0.01 + _spRitualBar->getContentSize().width * 0.5, 
+		topBarPosX, 
 		visibleSize.height - _spRitualBar->getContentSize().height);
 	_lpRitualLabel->setPosition(
 		_spRitualBar->getPositionX() - _spRitualBar->getContentSize().width * 0.45 + _lpRitualLabel->getContentSize().width * 0.5,

@@ -44,6 +44,7 @@ Cursor* Cursor::create(Deities deity)
 void Cursor::initOptions()
 {
 	// do things here like setTag(), setPosition(), any custom logic.
+	m_bMoving = false;
 }
 
 void Cursor::addEvents()
