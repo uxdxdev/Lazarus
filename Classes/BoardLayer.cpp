@@ -61,36 +61,106 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 	if (tEvent->GetEventType() == TwitchEventType::ZAPEVENT)
 	{
 		CCLOG("BoardLayer ZAPPY ZAP by %s", tEvent->GetUsername()->c_str());
-		helixCursor->attack();	
-		domeCursor->attack();
+		std::shared_ptr<TwitchPlayer> tPlayer = WorldManager::getInstance()->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (tPlayer != NULL)
+		{
+			switch (tPlayer->getDeity())
+			{
+			case HELIX:
+				helixCursor->attack();
+				break;
+			case DOME:
+				domeCursor->attack();
+				break;
+			default:
+				CCLOG("UPEVENT defaulted here on TwitchPlayer deity");
+				break;
+			}
+		}
 	}
 
 	if (tEvent->GetEventType() == TwitchEventType::UPEVENT)
 	{
-		CCLOG("BoardLayer TARGET Up by %s", tEvent->GetUsername()->c_str());
-		helixCursor->move(Directions::UP);
-		domeCursor->move(Directions::UP);
+		CCLOG("BoardLayer TARGET Up by %s", tEvent->GetUsername().get()->c_str());
+		std::shared_ptr<TwitchPlayer> tPlayer = WorldManager::getInstance()->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (tPlayer != NULL)
+		{
+			switch (tPlayer->getDeity())
+			{
+			case HELIX:
+				helixCursor->move(Directions::UP);
+				break;
+			case DOME:
+				domeCursor->move(Directions::UP);
+				break;
+			default:
+				CCLOG("UPEVENT defaulted here on TwitchPlayer deity");
+				break;
+			}
+		}	
 	}
 
 	if (tEvent->GetEventType() == TwitchEventType::DOWNEVENT)
 	{
 		CCLOG("BoardLayer TARGET Down by %s", tEvent->GetUsername()->c_str());
-		helixCursor->move(Directions::DOWN);
-		domeCursor->move(Directions::DOWN);
+		std::shared_ptr<TwitchPlayer> tPlayer = WorldManager::getInstance()->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (tPlayer != NULL)
+		{
+			switch (tPlayer->getDeity())
+			{
+			case HELIX:
+				helixCursor->move(Directions::DOWN);
+				break;
+			case DOME:
+				domeCursor->move(Directions::DOWN);
+				break;
+			default:
+				CCLOG("DOWNEVENT defaulted here on TwitchPlayer deity");
+				break;
+			}
+		}
 	}
 
 	if (tEvent->GetEventType() == TwitchEventType::LEFTEVENT)
 	{
 		CCLOG("BoardLayer TARGET Left by %s", tEvent->GetUsername()->c_str());
-		helixCursor->move(Directions::LEFT);
-		domeCursor->move(Directions::LEFT);
+		std::shared_ptr<TwitchPlayer> tPlayer = WorldManager::getInstance()->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (tPlayer != NULL)
+		{
+			switch (tPlayer->getDeity())
+			{
+			case HELIX:
+				helixCursor->move(Directions::LEFT);
+				break;
+			case DOME:
+				domeCursor->move(Directions::LEFT);
+				break;
+			default:
+				CCLOG("UPEVENT defaulted here on TwitchPlayer deity");
+				break;
+			}
+		}
 	}
 
 	if (tEvent->GetEventType() == TwitchEventType::RIGHTEVENT)
 	{
 		CCLOG("BoardLayer TARGET Right by %s", tEvent->GetUsername()->c_str());
-		helixCursor->move(Directions::RIGHT);
-		domeCursor->move(Directions::RIGHT);
+		std::shared_ptr<TwitchPlayer> tPlayer = WorldManager::getInstance()->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (tPlayer != NULL)
+		{
+			switch (tPlayer->getDeity())
+			{
+			case HELIX:
+				helixCursor->move(Directions::RIGHT);
+				break;
+			case DOME:
+				domeCursor->move(Directions::RIGHT);
+				break;
+			default:
+				CCLOG("UPEVENT defaulted here on TwitchPlayer deity");
+				break;
+			}
+		}
 	}
 }
 
