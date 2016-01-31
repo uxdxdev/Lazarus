@@ -1,4 +1,5 @@
 #include "Ritual.h"
+#include "WorldManager.h"
 
 namespace ritual{
 	Ritual::Ritual(Deities deity)
@@ -32,4 +33,18 @@ namespace ritual{
 
 		m_Sprite->runAction(cocos2d::RepeatForever::create(wobble));
 	}
+
+	void Ritual::ApplyDamage(float damage)
+	{
+		m_fHealth -= damage;
+	}
+
+	void Ritual::Update(float dt)
+	{
+		if (m_fHealth < 0)
+		{
+			WorldManager::getInstance()->GetGameBoard()->removeChild(m_Sprite);
+		}
+	}
+
 }

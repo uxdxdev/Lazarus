@@ -12,6 +12,8 @@ namespace ritual{
 		Ritual(Deities deity);		
 		void Init();
 		void Ritual::Animate();
+		void ApplyDamage(float damage);
+		void Update(float dt);
 	};
 
 }

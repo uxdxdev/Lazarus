@@ -5,6 +5,7 @@
 #include "Subject.h"
 #include "TwitchModel.h"
 #include "GameObject.h"
+#include "BoardLayer.h"
 
 
 using namespace std;
@@ -28,6 +29,9 @@ public:
 		return gameObjects;
 	}
 
+	void SetGameBoard(BoardLayer *board);
+	BoardLayer *GetGameBoard();
+
 private:
 	//Private singleton ctor and dtor
 	WorldManager();
@@ -37,7 +41,7 @@ private:
 	static WorldManager* m_Instance;
 	std::shared_ptr<TwitchModel> m_tModel;
 	vector<std::shared_ptr<gameobject::GameObject>> gameObjects;
-
+	BoardLayer *m_GameBoard;
 
 };
 #endif

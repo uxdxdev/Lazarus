@@ -45,11 +45,21 @@ void WorldManager::updateGameObjects(float dt)
 {
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
-		gameObjects.at(i)->update(dt);
+		gameObjects.at(i)->Update(dt);
 	}
 }
 
 std::shared_ptr<TwitchModel> WorldManager::getTwitchModel()
 {
 	return m_tModel;
+}
+
+void WorldManager::SetGameBoard(BoardLayer *board)
+{
+	m_GameBoard = board;
+}
+
+BoardLayer *WorldManager::GetGameBoard()
+{
+	return m_GameBoard;
 }
