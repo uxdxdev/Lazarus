@@ -2,6 +2,7 @@
 
 #include "WorldManager.h"
 #include "Creature.h"
+#include "Tower.h"
 
 USING_NS_CC;
 
@@ -202,24 +203,35 @@ void BoardLayer::spawnDome()
 {
 	//get cursor position
 	//spawn dome 
-	std::shared_ptr<Creature> spawned();
-	
+	std::shared_ptr<Creature> spawned(new Creature(Deities::DOME));
+	spawned->GetSprite()->setPosition(domeCursor->getPosition());
+	this->addChild(spawned->GetSprite());
 	//register with world manager
-
+	WorldManager::getInstance()->registerWithWorldManger(spawned);
 
 }
 void BoardLayer::spawnHelix()
 {
 	//get cursor position
 	//spawn helix
+	std::shared_ptr<Creature> spawned(new Creature(Deities::HELIX));
+	spawned->GetSprite()->setPosition(helixCursor->getPosition());
+	this->addChild(spawned->GetSprite());
 	//register with world manager
+	WorldManager::getInstance()->registerWithWorldManger(spawned);
+	
 }
 
 void BoardLayer::TowerDome()
 {
 	//get cursor position
 	//place tower dome 
+	/*std::shared_ptr<tower::Tower> spawned(new tower::Tower(Deities::DOME));
+	spawned->GetSprite()->setPosition(domeCursor->getPosition());
+	this->addChild(spawned->GetSprite());
 	//register with world manager
+	WorldManager::getInstance()->registerWithWorldManger(spawned);*/
+	
 }
 
 void BoardLayer::TowerHelix()
@@ -235,5 +247,9 @@ void BoardLayer::update(float dt)
 	//domeCursor->randomeMove();
 
 	//collisions
+	WorldManager::getInstance()->updateGameObjects(dt);
+	
+
+
 
 }

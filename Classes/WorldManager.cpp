@@ -41,6 +41,14 @@ void WorldManager::cleanUp()
 	m_Instance = nullptr;
 }
 
+void WorldManager::updateGameObjects(float dt)
+{
+	for (int i = 0; i < gameObjects.size(); i++)
+	{
+		gameObjects.at(i)->update(dt);
+	}
+}
+
 std::shared_ptr<TwitchModel> WorldManager::getTwitchModel()
 {
 	return m_tModel;

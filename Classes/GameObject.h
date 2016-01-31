@@ -10,6 +10,7 @@ namespace gameobject{
 		virtual ~GameObject(){}
 		virtual void ApplyDamage(float damage);
 		virtual void Attack(GameObject *target);
+		virtual void update(float dt){}
 		Deities GetDeity();
 		void SetDeity(Deities deity);
 		cocos2d::Sprite *GetSprite();
