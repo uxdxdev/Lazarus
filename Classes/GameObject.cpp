@@ -39,5 +39,6 @@ namespace gameobject{
 	cocos2d::Sprite *GameObject::GetSprite()
 	{
 		return m_Sprite;
-	}	
+	}
+
 }

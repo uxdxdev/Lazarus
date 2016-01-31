@@ -20,17 +20,19 @@ Creature::Creature(Deities deity)
 
 void Creature::Init()
 {
-	float smallestDistance = 0;	
+	float smallestDistance = 99999;	
 	for (int i = 0; i < WorldManager::getInstance()->getGameObects().size(); i++)
 	{
-		float xDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionX() - this->m_Sprite->getPositionX());
-		float yDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionY() - this->m_Sprite->getPositionY());
+		float xDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionX() - m_Sprite->getPositionX());
+		float yDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionY() - m_Sprite->getPositionY());
 		float distance = sqrt((xDist * xDist) + (yDist * yDist));
-		if (distance < smallestDistance)
+		if (distance < smallestDistance && WorldManager::getInstance()->getGameObects()[i]->GetDeity() != m_Deity)
 		{
 			m_pTarget = WorldManager::getInstance()->getGameObects()[i].get();
+			smallestDistance = distance;
 		}
 	}
+	MoveToTarget();
 }
 
 void Creature::Update(float dt)
@@ -40,7 +42,7 @@ void Creature::Update(float dt)
 
 void Creature::MoveToTarget()
 {
-	if (m_pTarget)
+	if (m_pTarget != nullptr)
 	{
 		// Move to target
 		auto moveAction = cocos2d::MoveTo::create(4.0f * ACTION_SPEED, m_pTarget->GetSprite()->getPosition());

@@ -10,6 +10,7 @@ public:
 	void Update(float dt);
 	void MoveToTarget();
 	void Attack();
+
 };
 
 #endif

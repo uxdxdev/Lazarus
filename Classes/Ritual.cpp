@@ -15,7 +15,7 @@ namespace ritual{
 		}
 
 		m_fHealth = 100;
-
+				
 		Init();
 	}	
 

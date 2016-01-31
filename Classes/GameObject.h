@@ -16,8 +16,6 @@ namespace gameobject{
 
 		virtual void SetDeity(Deities deity);
 		virtual Deities GetDeity();
-
-		virtual cocos2d::Sprite *GetSprite();
 		
 		virtual void SetHealth(float health);
 		virtual float GetHealth();
@@ -25,12 +23,14 @@ namespace gameobject{
 		virtual void SetTarget(GameObject *target);
 		virtual GameObject *GetTarget();
 
+		virtual cocos2d::Sprite *GetSprite();
+
 	protected:
 		float m_fHealth;
 		Deities m_Deity;
 		float m_fAttackValue;
-		cocos2d::Sprite *m_Sprite;
 		GameObject *m_pTarget;
+		cocos2d::Sprite *m_Sprite;
 	};
 
 }

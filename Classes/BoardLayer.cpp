@@ -25,13 +25,16 @@ bool BoardLayer::init()
 	}
 
 	Size boardSize =_spBoard->getContentSize();
-	std::unique_ptr<ritual::Ritual> helixRitual (new ritual::Ritual(HELIX));
+	std::shared_ptr<ritual::Ritual> helixRitual (new ritual::Ritual(HELIX));
+	WorldManager::getInstance()->registerWithWorldManger(helixRitual);
 	helixRitual->GetSprite()->setPosition(
 		(screenSize.width - boardSize.width + helixRitual->GetSprite()->getContentSize().width) * 0.55,
 		screenSize.height * 0.5);
 	this->addChild(helixRitual->GetSprite());
 
-	std::unique_ptr<ritual::Ritual> domeRitual (new ritual::Ritual(DOME));
+	std::shared_ptr<ritual::Ritual> domeRitual(new ritual::Ritual(DOME));
+	WorldManager::getInstance()->registerWithWorldManger(domeRitual);
+
 	domeRitual->GetSprite()->setPosition(
 		(screenSize.width + boardSize.width - domeRitual->GetSprite()->getContentSize().width) * 0.48,
 		screenSize.height * 0.5);
