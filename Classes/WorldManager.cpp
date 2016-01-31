@@ -29,6 +29,8 @@ WorldManager::~WorldManager()
 bool WorldManager::init()
 {
 	bool success = true;
+	m_tModel = TwitchModel::create();
+	this->addObserver(m_tModel.get());
 
 	return success;
 }
@@ -37,4 +39,9 @@ void WorldManager::cleanUp()
 {
 	delete m_Instance;
 	m_Instance = nullptr;
+}
+
+std::shared_ptr<TwitchModel> WorldManager::getTwitchModel()
+{
+	return m_tModel;
 }

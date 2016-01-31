@@ -3,11 +3,7 @@
 
 //Includes
 #include "Subject.h"
-
-//Forward Declarations
-class Scene;
-class Node;
-class Achievements;
+#include "TwitchModel.h"
 
 class WorldManager : public Subject
 {
@@ -20,6 +16,7 @@ public:
 
 	//Clean up all resources created by the World Manager
 	void cleanUp();
+	std::shared_ptr<TwitchModel> getTwitchModel();
 
 
 private:
@@ -29,6 +26,8 @@ private:
 
 	//Static reference for system wide access
 	static WorldManager* m_Instance;
+	std::shared_ptr<TwitchModel> m_tModel;
+
 
 };
 #endif
