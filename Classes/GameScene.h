@@ -1,7 +1,7 @@
 #ifndef __GAMESSCENE_SCENE_H__
 #define __GAMESCENE_SCENE_H__
 
-#include "BoardLayer.h"
+#include "RitualHUD.h"
 #include "Cursor.h"
 #include <memory>
 #include "bot\TwitchBot.h"
@@ -25,6 +25,9 @@ public:
 private:
 	std::unique_ptr<bot::TwitchBot> m_TwitchBot;
 	BoardLayer* m_pBoardLayer;
+	RitualHUD* m_pHelixHUD;
+	RitualHUD* m_pDomeHUD;
+	
 
 	
 };

@@ -75,8 +75,6 @@ shared_ptr<TwitchPlayer> TwitchModel::registerPlayer(shared_ptr<string> pname, D
 		
 	}
 	
-	
-
 	return playerCheck;
 }
 
@@ -117,14 +115,15 @@ topbar TwitchModel::getBar(BarType bartype){
 	case SPAWNBARHELIX:
 		return spawnBarHelix;
 		break;
-
 	case TOWERBARHELIX:
 		return towerBarHelix;
 		break;
-
 	case RITUALBARHELIX:
 		return ritualBarHelix;
 		break;
+	case ZAPBARHELIX:
+		return zapBarHelix;
+
 	case SPAWNBARDOME:
 		return spawnBarDome; 
 		break;
@@ -134,6 +133,8 @@ topbar TwitchModel::getBar(BarType bartype){
 	case RITUALBARDOME:
 		return ritualBarDome;
 		break;
+	case ZAPBARDOME:
+		return zapBarDome;
 	default:
 		
 		break;
@@ -185,13 +186,13 @@ void TwitchModel::increaseBar(TwitchEventType teType, shared_ptr<string> pname)
 			if (teType == CHANTEVENT) {
 				if (ritualBarHelix.current < ritualBarHelix.max) {
 					ritualBarHelix.current += ritualBarHelix.max * 0.1;
-					CCLOG("ritualBar Helix up!");
+					CCLOG("ritualBar Helix up! now %i", ritualBarHelix.current);
 				}
 			}
 			if (teType == TOWEREVENT) {
 				if (towerBarHelix.current < towerBarHelix.max) {
 					towerBarHelix.current += towerBarHelix.max * 0.1;
-					CCLOG("towerbar Helix up!");
+					CCLOG("towerbar Helix up! now %i", towerBarHelix.current);
 				}
 			}
 			if (teType == ZAPEVENT) {

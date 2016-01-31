@@ -28,12 +28,12 @@ typedef enum e_Deities {
 typedef struct topbar{
 
 
-	unsigned int current;
-	void setCurrent(unsigned int setcurrent){
+	float current;
+	void setCurrent(float  setcurrent){
 		current = setcurrent;
 	}
-	unsigned int max;
-	void setMax(unsigned int setMax){
+	float max;
+	void setMax(float setMax){
 		max = setMax;
 	}
 	void setsaviour(Deities setsaviour){
@@ -70,9 +70,11 @@ typedef enum e_BarTypes {
 	SPAWNBARHELIX,
 	TOWERBARHELIX,
 	RITUALBARHELIX,
+	ZAPBARHELIX,
 	SPAWNBARDOME,
 	TOWERBARDOME,
-	RITUALBARDOME
+	RITUALBARDOME,
+	ZAPBARDOME
 
 } BarType;
 
