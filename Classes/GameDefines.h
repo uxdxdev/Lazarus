@@ -12,7 +12,7 @@ typedef struct LinePointJames
 
 // multiplier for the speed of all functions
 #define ACTION_SPEED 1.0f
-#define CURSOR_DISPLACEMENT 10.0f
+#define CURSOR_DISPLACEMENT 20.0f
 
 //server defines
 #define SERVER_URL "irc.twitch.tv"
