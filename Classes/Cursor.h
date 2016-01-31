@@ -17,8 +17,10 @@ public:
 	void addEvents();
 
 	void move(Directions direction);
+	void MoveTarget(Directions direction);
+
 	void randomeMove();
-	void toggleMovement() { m_bMoving = !m_bMoving; }
+	void toggleMovement() { m_bMoving = true; }
 	bool isMoving() { return m_bMoving; }
 
 private:

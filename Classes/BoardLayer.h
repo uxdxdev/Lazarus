@@ -1,11 +1,15 @@
 #ifndef _BOARD_
 #define _BOARD_
 
+#include <memory>
+
+#include "Observer.h"
+#include "TwitchEvent.h"
 #include "Cursor.h"
 
 using namespace cocos2d;
 
-class BoardLayer : public cocos2d::Layer
+class BoardLayer : public cocos2d::Layer, public Observer
 {
 public:
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -14,6 +18,9 @@ public:
 	CREATE_FUNC(BoardLayer);
 
 	Size getBoardSize(){ return _spBoard->getContentSize(); }
+
+	virtual void onNotify(std::shared_ptr<TwitchEvent> tEvent);
+
 	void update(float dt) override;
 
 private:

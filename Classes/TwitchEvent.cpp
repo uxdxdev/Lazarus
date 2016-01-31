@@ -32,6 +32,16 @@ std::shared_ptr<TwitchEvent> TwitchEvent::create(TwitchEventType tevent, std::st
 	return NULL;
 }
 
+TwitchEventType TwitchEvent::GetEventType()
+{
+	return eventType;
+}
+
+std::string TwitchEvent::GetUsername()
+{
+	return playerName;
+}
+
 
 
 bool TwitchEvent::init()

@@ -1,5 +1,7 @@
 #include "BoardLayer.h"
 
+#include "WorldManager.h"
+
 USING_NS_CC;
 
 bool BoardLayer::init()
@@ -44,11 +46,30 @@ bool BoardLayer::init()
 		domeRitual->getPositionX() - domeRitual->getContentSize().width,
 		domeRitual->getPositionY());
 	this->addChild(domeCursor);
+
+
+	// Register with the world manager
+	WorldManager::getInstance()->addObserver(this);
+
 	return true;
+}
+
+void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
+{
+	if (tEvent->GetEventType() == TwitchEventType::ZAPEVENT)
+	{
+		CCLOG("BoardLayer ZAPPY ZAP by %s", tEvent->GetUsername().c_str());
+	}
+
+	if (tEvent->GetEventType() == TwitchEventType::UPEVENT)
+	{
+		CCLOG("BoardLayer TARGET UP by %s", tEvent->GetUsername().c_str());
+		helixCursor->move(Directions::UP);
+	}
 }
 
 void BoardLayer::update(float dt)
 {
-	helixCursor->randomeMove();
-	domeCursor->randomeMove();
+	//helixCursor->randomeMove();
+	//domeCursor->randomeMove();
 }

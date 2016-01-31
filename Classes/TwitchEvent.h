@@ -19,13 +19,10 @@ public:
 	//overload this later
 	virtual bool init();
 	void cleanup(){ }
-	
-
-
+	TwitchEventType GetEventType();
+	std::string GetUsername();
 	TwitchEvent();
 	~TwitchEvent();
-
-	
 
 private:
 	TwitchEventType eventType;
