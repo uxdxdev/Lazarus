@@ -1,58 +1,35 @@
 #include "Ritual.h"
 
-
-USING_NS_CC;
-
-Ritual::Ritual(){}
-
-Ritual::~Ritual(){}
-
-Ritual* Ritual::create(Deities deity)
-{
-	Ritual* pSprite = new Ritual();
-	
-	switch (deity)
+namespace ritual{
+	Ritual::Ritual(Deities deity)
 	{
-	case HELIX:
-		pSprite->initWithFile("helix.png");
-		break;
-	case DOME:
-		pSprite->initWithFile("dome.png");
-		break;
-	default:
-		break;
+		m_Deity = deity;
+		if (deity == HELIX)
+		{
+			m_Sprite = cocos2d::Sprite::create("helix.png");
+		}			
+		else
+		{
+			m_Sprite = cocos2d::Sprite::create("dome.png");
+		}
+
+		m_fHealth = 100;
+
+		Init();
+	}	
+
+	void Ritual::Init()
+	{
+		Animate();
 	}
 
-	if (pSprite)
+	void Ritual::Animate()
 	{
-		pSprite->autorelease();
+		// do things here like setTag(), setPosition(), any custom logic.
+		auto rotateCW = cocos2d::RotateBy::create(0.50f * ACTION_SPEED, 40.0f);
+		auto rotateCCW = rotateCW->reverse();
+		auto wobble = cocos2d::Sequence::create(rotateCW, rotateCCW, rotateCCW->clone(), rotateCW->clone(), nullptr);
 
-		pSprite->initOptions();
-
-		pSprite->addEvents();
-
-		pSprite->scheduleUpdate();
-
-		return pSprite;
+		m_Sprite->runAction(cocos2d::RepeatForever::create(wobble));
 	}
-
-	CC_SAFE_DELETE(pSprite);
-	return NULL;
-
-}
-
-void Ritual::initOptions()
-{
-	// do things here like setTag(), setPosition(), any custom logic.
-	auto rotateCW = RotateBy::create(0.50f * ACTION_SPEED, 40.0f);
-	auto rotateCCW = rotateCW->reverse();
-	auto wobble = Sequence::create(rotateCW, rotateCCW, rotateCCW->clone(), rotateCW->clone(), nullptr);
-
-	this->runAction(RepeatForever::create(wobble));
-
-}
-
-void Ritual::addEvents()
-{
-	// add any event handler 
 }

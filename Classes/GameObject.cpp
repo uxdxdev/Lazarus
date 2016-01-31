@@ -11,8 +11,20 @@ namespace gameobject{
 		return m_Deity;
 	}
 
-	void GameObject::Attack(GameObject *target, float value)
+	void GameObject::SetDeity(Deities deity)
 	{
-		target->ApplyDamage(value);
+		m_Deity = deity;
+	}
+
+
+	cocos2d::Sprite *GameObject::GetSprite()
+	{
+		return m_Sprite;
+	}
+
+
+	void GameObject::Attack(GameObject *target)
+	{
+		target->ApplyDamage(m_fAttackValue);
 	}
 }
