@@ -8,6 +8,8 @@ public:
 	Creature(Deities deity);
 	void Init();
 	void Update(float dt);
+	void MoveToTarget();
+	void Attack();
 };
 
 #endif

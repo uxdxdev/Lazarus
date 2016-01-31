@@ -16,15 +16,28 @@ namespace gameobject{
 		m_Deity = deity;
 	}
 
+	void GameObject::SetTarget(GameObject *target)
+	{
+		m_pTarget = target;		
+	}
+
+	GameObject *GameObject::GetTarget()
+	{
+		return m_pTarget;
+	}
+
+	void GameObject::SetHealth(float health)
+	{
+		m_fHealth = health;
+	}
+
+	float GameObject::GetHealth()
+	{
+		return m_fHealth;
+	}
 
 	cocos2d::Sprite *GameObject::GetSprite()
 	{
 		return m_Sprite;
-	}
-
-
-	void GameObject::Attack(GameObject *target)
-	{
-		target->ApplyDamage(m_fAttackValue);
-	}
+	}	
 }
