@@ -41,12 +41,16 @@ public:
 private:
 	topbar getBar(BarType bartype);
 	string name;
+	topbar zapBarHelix;
 	topbar spawnBarHelix;
 	topbar towerBarHelix;
 	topbar ritualBarHelix;
+	topbar zapBarDome;
 	topbar spawnBarDome;
 	topbar towerBarDome;
 	topbar ritualBarDome;
+
+	void increaseBar(TwitchEventType teType, shared_ptr<string> pname);
 	
 };
 
