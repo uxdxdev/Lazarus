@@ -207,6 +207,8 @@ void BoardLayer::spawnDome()
 	//get cursor position
 	//spawn dome 
 	std::shared_ptr<Creature> spawned(new Creature(Deities::DOME));
+	WorldManager::getInstance()->registerWithWorldManger(spawned);
+
 	spawned->GetSprite()->setPosition(domeCursor->getPosition());
 	this->addChild(spawned->GetSprite());
 	//register with world manager
@@ -218,6 +220,8 @@ void BoardLayer::spawnHelix()
 	//get cursor position
 	//spawn helix
 	std::shared_ptr<Creature> spawned(new Creature(Deities::HELIX));
+	WorldManager::getInstance()->registerWithWorldManger(spawned);
+
 	spawned->GetSprite()->setPosition(helixCursor->getPosition());
 	this->addChild(spawned->GetSprite());
 	//register with world manager
