@@ -24,12 +24,13 @@ namespace gameobject{
 
 		void SetTarget(GameObject *target);
 		GameObject *GetTarget();
+		cocos2d::Sprite *m_Sprite;
 		
 	protected:
 		float m_fHealth;
 		Deities m_Deity;
 		float m_fAttackValue;
-		cocos2d::Sprite *m_Sprite;
+		
 		GameObject *m_pTarget;
 	};
 
