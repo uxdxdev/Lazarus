@@ -5,16 +5,21 @@
 
 namespace gameobject{
 
-	class GameObject : public cocos2d::Sprite{
+	class GameObject {
 	public:
 		virtual ~GameObject(){}
 		virtual void ApplyDamage(float damage);
 		virtual void Attack(GameObject *target);
 		Deities GetDeity();
-	private:
+		void SetDeity(Deities deity);
+		cocos2d::Sprite *GetSprite();
+		void SetHealth(float health);
+		float GetHealth();
+	protected:
 		float m_fHealth;
 		Deities m_Deity;
 		float m_fAttackValue;
+		cocos2d::Sprite *m_Sprite;
 	};
 
 }

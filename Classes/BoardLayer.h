@@ -37,8 +37,8 @@ private:
 
 	Cursor* helixCursor;
 	Cursor* domeCursor;
-	Ritual* helixRitual;
-	Ritual* domeRitual;
+	ritual::Ritual* helixRitual;
+	ritual::Ritual* domeRitual;
 	
 };
 

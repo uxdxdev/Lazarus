@@ -23,30 +23,30 @@ bool BoardLayer::init()
 	}
 
 	Size boardSize =_spBoard->getContentSize();
-	helixRitual = Ritual::create(HELIX);
-	helixRitual->setPosition(
-		(screenSize.width - boardSize.width + helixRitual->getContentSize().width) * 0.55,
+	helixRitual = new ritual::Ritual(HELIX);
+	helixRitual->GetSprite()->setPosition(
+		(screenSize.width - boardSize.width + helixRitual->GetSprite()->getContentSize().width) * 0.55,
 		screenSize.height * 0.5);
-	this->addChild(helixRitual);
+	this->addChild(helixRitual->GetSprite());
 
-	domeRitual = Ritual::create(DOME);
-	domeRitual->setPosition(
-		(screenSize.width + boardSize.width - domeRitual->getContentSize().width) * 0.48,
+	domeRitual = new ritual::Ritual(DOME);
+	domeRitual->GetSprite()->setPosition(
+		(screenSize.width + boardSize.width - domeRitual->GetSprite()->getContentSize().width) * 0.48,
 		screenSize.height * 0.5);
-	this->addChild(domeRitual);
+	this->addChild(domeRitual->GetSprite());
 
 	helixCursor = Cursor::create(HELIX);
 	helixCursor->setDeity(HELIX);
 	helixCursor->setPosition(
-		helixRitual->getPositionX() + helixRitual->getContentSize().width,
-		helixRitual->getPositionY());
+		helixRitual->GetSprite()->getPositionX() + helixRitual->GetSprite()->getContentSize().width,
+		helixRitual->GetSprite()->getPositionY());
 	this->addChild(helixCursor);
 
 	domeCursor = Cursor::create(DOME);
 	domeCursor->setDeity(DOME);
 	domeCursor->setPosition(
-		domeRitual->getPositionX() - domeRitual->getContentSize().width,
-		domeRitual->getPositionY());
+		domeRitual->GetSprite()->getPositionX() - domeRitual->GetSprite()->getContentSize().width,
+		domeRitual->GetSprite()->getPositionY());
 	this->addChild(domeCursor);
 
 
