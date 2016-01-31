@@ -24,6 +24,9 @@ public:
 
 	void update(float dt) override;
 
+	void spawnHelix();
+	void spawnDome();
+
 	
 
 private:
