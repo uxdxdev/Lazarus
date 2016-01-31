@@ -26,6 +26,8 @@ private:
 	Label* _lpSpawnLabel;
 	Sprite* _spZapBar;
 	Label* _lpZapLabel;
+
+	Deities _eDeity;
 };
 
 #endif

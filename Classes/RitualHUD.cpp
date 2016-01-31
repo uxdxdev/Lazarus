@@ -1,4 +1,5 @@
 #include "RitualHUD.h"
+#include "WorldManager.h"
 
 USING_NS_CC;
 
@@ -18,7 +19,8 @@ void RitualHUD::initDeity(Deities deity)
 {
 
 	std::string filename = "";
-	switch (deity)
+	_eDeity = deity;
+	switch (_eDeity)
 	{
 	case HELIX:
 		filename = "helix";
@@ -98,5 +100,13 @@ void RitualHUD::initDeity(Deities deity)
 
 void RitualHUD::update(float dt)
 {
+	switch (_eDeity)
+	{
+	case HELIX:
 
+
+			break;
+	default:
+		break;
+	}
 }
