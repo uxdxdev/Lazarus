@@ -27,13 +27,18 @@ typedef enum e_Deities {
 
 typedef struct topbar{
 
-	/*topbar(int acurrent, int amax, Deities asaviour){
-		current = acurrent;
-		amax = max;
-		saviour = asaviour;
-	}*/
+
 	unsigned int current;
+	void setCurrent(unsigned int setcurrent){
+		current = setcurrent;
+	}
 	unsigned int max;
+	void setMax(unsigned int setMax){
+		max = setMax;
+	}
+	void setsaviour(Deities setsaviour){
+		saviour = setsaviour;
+	}
 	Deities saviour;
 }topbar;
 
@@ -59,5 +64,17 @@ typedef enum e_TwitchEvents {
 	PRAISEDOME   //register dome
 
 } TwitchEventType;
+
+typedef enum e_BarTypes {
+
+	SPAWNBARHELIX,
+	TOWERBARHELIX,
+	RITUALBARHELIX,
+	SPAWNBARDOME,
+	TOWERBARDOME,
+	RITUALBARDOME
+
+} BarType;
+
 
 #endif

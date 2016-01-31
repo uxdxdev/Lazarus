@@ -20,13 +20,13 @@ public:
 	virtual bool init();
 	void cleanup(){ }
 	TwitchEventType GetEventType();
-	std::string GetUsername();
+	shared_ptr<string> GetUsername();
 	TwitchEvent();
 	~TwitchEvent();
 
 private:
 	TwitchEventType eventType;
-	std::string playerName;
+	shared_ptr<string> playerName;
 };
 
 #endif

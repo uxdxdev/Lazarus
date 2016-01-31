@@ -22,7 +22,7 @@ std::shared_ptr<TwitchEvent> TwitchEvent::create(TwitchEventType tevent, std::st
 	std::shared_ptr<TwitchEvent> pRet(new TwitchEvent());
 	//set up default values 
 	pRet->eventType = tevent;
-	pRet->playerName = username;
+	pRet->playerName = shared_ptr<string>(new string(username.c_str()));
 
 	if (pRet->init())
 	{
@@ -37,7 +37,7 @@ TwitchEventType TwitchEvent::GetEventType()
 	return eventType;
 }
 
-std::string TwitchEvent::GetUsername()
+shared_ptr<string> TwitchEvent::GetUsername()
 {
 	return playerName;
 }

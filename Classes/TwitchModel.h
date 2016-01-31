@@ -28,15 +28,22 @@ public:
 	shared_ptr<TwitchPlayer> getPlayer(shared_ptr<string> pname);
 	shared_ptr<TwitchPlayer> registerPlayer(shared_ptr<string> pname, Deities saviour);
 
+	void initBars();
+	
+	unsigned int getBarCurrent(BarType bartype);
+	unsigned int getBarMax(BarType bartype);
+	void setBarCurrent(BarType bartype, unsigned int currentset);
+	void setBarMax(BarType bartype, unsigned int maxset);
+
 	//TODO clear all players and counters
 
+
 private:
+	topbar getBar(BarType bartype);
 	string name;
-	topbar chantBarHelix;
 	topbar spawnBarHelix;
 	topbar towerBarHelix;
 	topbar ritualBarHelix;
-	topbar chantBarDome;
 	topbar spawnBarDome;
 	topbar towerBarDome;
 	topbar ritualBarDome;
