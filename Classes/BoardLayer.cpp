@@ -1,6 +1,7 @@
 #include "BoardLayer.h"
 
 #include "WorldManager.h"
+#include "Creature.h"
 
 USING_NS_CC;
 
@@ -201,7 +202,10 @@ void BoardLayer::spawnDome()
 {
 	//get cursor position
 	//spawn dome 
+	std::shared_ptr<creature::Creature> spawned();
+	
 	//register with world manager
+
 
 }
 void BoardLayer::spawnHelix()
