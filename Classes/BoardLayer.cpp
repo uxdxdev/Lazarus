@@ -174,11 +174,11 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 		if (twitchp != NULL){
 			if (twitchp->getDeity() == Deities::HELIX)
 			{
-				spawnDome();
+				spawnHelix();
 			}
 			else if(twitchp->getDeity() == Deities::DOME)
 			{
-				spawnHelix();
+				spawnDome();
 			}
 		}
 	}
