@@ -3,12 +3,11 @@
 
 #include "GameObject.h"
 
-namespace creature{
+class Creature : public gameobject::GameObject{
+public:
+	Creature(Deities deity);
+	void Init();
+	void Update(float dt);
+};
 
-	class Creature : public gameobject::GameObject{
-	public:
-		
-	};
-
-}
 #endif

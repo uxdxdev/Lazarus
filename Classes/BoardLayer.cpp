@@ -202,7 +202,7 @@ void BoardLayer::spawnDome()
 {
 	//get cursor position
 	//spawn dome 
-	std::shared_ptr<creature::Creature> spawned();
+	std::shared_ptr<Creature> spawned();
 	
 	//register with world manager
 
