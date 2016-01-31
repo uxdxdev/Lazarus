@@ -1,3 +1,6 @@
+#ifndef GAME_DEFINES_H
+#define GAME_DEFINES_H
+
 #include "cocos2d.h"
 
 typedef struct LinePointJames
@@ -56,3 +59,5 @@ typedef enum e_TwitchEvents {
 	PRAISEDOME   //register dome
 
 } TwitchEventType;
+
+#endif

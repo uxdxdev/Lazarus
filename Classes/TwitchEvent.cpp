@@ -16,13 +16,13 @@ std::shared_ptr<TwitchEvent> TwitchEvent::create()
 }
 
 
-std::shared_ptr<TwitchEvent> TwitchEvent::create(TwitchEventType tevent, std::shared_ptr<string>* pName)
+std::shared_ptr<TwitchEvent> TwitchEvent::create(TwitchEventType tevent, std::string username)
 {
 	//create our instance to be returned
 	std::shared_ptr<TwitchEvent> pRet(new TwitchEvent());
 	//set up default values 
 	pRet->eventType = tevent;
-	pRet->playerName = pName;
+	pRet->playerName = username;
 
 	if (pRet->init())
 	{
@@ -30,6 +30,16 @@ std::shared_ptr<TwitchEvent> TwitchEvent::create(TwitchEventType tevent, std::sh
 		return pRet;
 	}
 	return NULL;
+}
+
+TwitchEventType TwitchEvent::GetEventType()
+{
+	return eventType;
+}
+
+std::string TwitchEvent::GetUsername()
+{
+	return playerName;
 }
 
 

@@ -54,36 +54,58 @@ void Cursor::addEvents()
 void Cursor::move(Directions direction) 
 {
 	// apply a movement action only if cursor has finished moving
-	if (!this->isMoving())
+	
+	Vec2 movement = Vec2(0, 0);
+
+	switch (direction)
 	{
-		Vec2 movement = Vec2(0, 0);
+	case UP:
+		movement.y = CURSOR_DISPLACEMENT;
+		break;
+	case DOWN:
+		movement.y = -CURSOR_DISPLACEMENT;
+		break;
+	case LEFT:
+		movement.x = -CURSOR_DISPLACEMENT;
+		break;
+	case RIGHT:
+		movement.x = CURSOR_DISPLACEMENT;
+		break;
+	default:
+		CCLOG("Cursor::move switch statement defaulted here!");
+		break;
+	}
 
-		switch (direction)
-		{
-		case UP:
-			movement.y = CURSOR_DISPLACEMENT;
-			break;
-		case DOWN:
-			movement.y = -CURSOR_DISPLACEMENT;
-			break;
-		case LEFT:
-			movement.x = -CURSOR_DISPLACEMENT;
-			break;
-		case RIGHT:
-			movement.x = CURSOR_DISPLACEMENT;
-			break;
-		default:
-			CCLOG("Cursor::move switch statement defaulted here!");
-			break;
-		}
 
-		auto moveAction = MoveBy::create(0.3f * ACTION_SPEED, movement);
-		auto easeInOut = EaseInOut::create(moveAction->clone(), 2.0f);
-		auto delay = DelayTime::create(0.3f * ACTION_SPEED);
-		auto callToggleMovement = CallFunc::create(std::bind(&Cursor::toggleMovement, this));
-		auto sequence = Sequence::create(moveAction, delay, callToggleMovement, nullptr);
+	auto moveAction = MoveBy::create(0.3f * ACTION_SPEED, movement);
+	auto easeInOut = EaseInOut::create(moveAction->clone(), 2.0f);
+	auto delay = DelayTime::create(0.3f * ACTION_SPEED);
+	auto callToggleMovement = CallFunc::create(std::bind(&Cursor::toggleMovement, this));
+	auto sequence = Sequence::create(easeInOut, delay, callToggleMovement, nullptr);
 
-		this->runAction(sequence);
+	this->runAction(sequence);
+	
+}
+
+void Cursor::MoveTarget(Directions direction)
+{
+	switch (direction)
+	{
+	case UP:
+		this->setPosition(Vec2(this->getPositionX(), this->getPositionY() + CURSOR_DISPLACEMENT));
+		break;
+	case DOWN:
+		this->setPosition(Vec2(this->getPositionX(), this->getPositionY() - CURSOR_DISPLACEMENT));
+		break;
+	case LEFT:
+		this->setPosition(Vec2(this->getPositionX() - CURSOR_DISPLACEMENT, this->getPositionY()));
+		break;
+	case RIGHT:
+		this->setPosition(Vec2(this->getPositionX() + CURSOR_DISPLACEMENT, this->getPositionY()));
+		break;
+	default:
+		CCLOG("Cursor::move switch statement defaulted here!");
+		break;
 	}
 }
 

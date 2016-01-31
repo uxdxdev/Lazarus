@@ -3,6 +3,8 @@
 
 #include "GameDefines.h"
 #include "Observer.h"
+#include "TwitchEvent.h"
+
 using namespace std;
 
 class TwitchPlayer : public Observer
@@ -18,7 +20,7 @@ public:
 
 	void TwitchPlayer::setDiety(Deities pSavior);
 
-	void onNotify(cocos2d::Node* node, cocos2d::EventCustom* event);
+	void onNotify(std::shared_ptr<TwitchEvent> tEvent);
 	TwitchPlayer();
 	~TwitchPlayer();
 

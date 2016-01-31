@@ -16,7 +16,7 @@ std::shared_ptr<TwitchModel> TwitchModel::create()
 }
 
 
-void TwitchModel::onNotify(cocos2d::Node* node, cocos2d::EventCustom* event){
+void TwitchModel::onNotify(std::shared_ptr<TwitchEvent> tEvent){
 	//handle messages here
 }
 
