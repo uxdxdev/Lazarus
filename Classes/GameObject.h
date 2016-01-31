@@ -11,13 +11,18 @@ namespace gameobject{
 	public:
 		virtual ~GameObject(){}
 		virtual void ApplyDamage(float damage);
-		virtual void Attack();
-		Deities GetDeity();
+				
 		void SetDeity(Deities deity);
+		Deities GetDeity();
+
 		cocos2d::Sprite *GetSprite();
+		
 		void SetHealth(float health);
-		void SetTarget(GameObject *target);
 		float GetHealth();
+
+		void SetTarget(GameObject *target);
+		GameObject *GetTarget();
+		
 	protected:
 		float m_fHealth;
 		Deities m_Deity;
