@@ -51,13 +51,16 @@ bool BoardLayer::init()
 
 
 	// Register with the world manager
+	
 	WorldManager::getInstance()->addObserver(this);
+
 
 	return true;
 }
 
 void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 {
+	WorldManager* worldMan = WorldManager::getInstance();
 	if (tEvent->GetEventType() == TwitchEventType::ZAPEVENT)
 	{
 		CCLOG("BoardLayer ZAPPY ZAP by %s", tEvent->GetUsername()->c_str());
@@ -91,6 +94,21 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 		CCLOG("BoardLayer TARGET Right by %s", tEvent->GetUsername()->c_str());
 		helixCursor->move(Directions::RIGHT);
 		domeCursor->move(Directions::RIGHT);
+	}
+	if (tEvent->GetEventType() == TwitchEventType::SPAWNEVENT)
+	{
+		//check if the spawn bar is full
+		shared_ptr<TwitchPlayer> twitchp = worldMan->getTwitchModel()->getPlayer(tEvent->GetUsername());
+		if (twitchp != NULL){
+			if (twitchp->getDiety() == Deities::HELIX)
+			{
+
+			}
+			else if(twitchp->getDiety() == Deities::DOME)
+			{
+
+			}
+		}
 	}
 }
 

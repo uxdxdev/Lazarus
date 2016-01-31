@@ -17,7 +17,7 @@ public:
 	void cleanup(){ /*this->~TwitchPlayer();*/ }
 	void setName(shared_ptr<string> nameset);
 	shared_ptr<string> getName(){ return this->name; }
-
+	Deities getDiety(){ return savior; }
 	void TwitchPlayer::setDiety(Deities pSavior);
 
 	void onNotify(std::shared_ptr<TwitchEvent> tEvent);
