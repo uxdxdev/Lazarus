@@ -21,7 +21,7 @@ namespace ritual{
 
 	void Ritual::Init()
 	{
-		Animate();
+		Animate();	
 	}
 
 	void Ritual::Animate()

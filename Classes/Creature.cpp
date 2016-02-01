@@ -32,6 +32,10 @@ void Creature::Init()
 			smallestDistance = distance;
 		}
 	}
+	
+	m_Sprite->setScale(0.1f, 0.1f);
+	auto growAction = cocos2d::ScaleTo::create(0.5f * ACTION_SPEED, 0.5f);
+	m_Sprite->runAction(growAction);
 	MoveToTarget();
 }
 

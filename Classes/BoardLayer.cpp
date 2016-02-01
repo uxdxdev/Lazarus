@@ -84,6 +84,13 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 				CCLOG("UPEVENT defaulted here on TwitchPlayer deity");
 				break;
 			}
+
+			auto move = cocos2d::MoveBy::create(0.05f * ACTION_SPEED, Vec2(10.0f, 0));
+			auto moveUp = cocos2d::MoveBy::create(0.05f * ACTION_SPEED, Vec2(0, 10.0f));
+			auto moveBack = move->reverse();
+			auto moveDown = moveUp->reverse();
+			auto sequence = cocos2d::Sequence::create(move, moveBack, moveBack->clone(), move->clone(), moveUp, moveDown, moveDown->clone(), moveUp->clone(), nullptr);
+			this->runAction(sequence);
 		}
 	}
 

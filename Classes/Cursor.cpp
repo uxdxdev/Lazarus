@@ -181,4 +181,5 @@ void Cursor::attack()
 {
 	auto sequence = Sequence::create(ScaleTo::create(0.5f, 2.0f), ScaleTo::create(0.5f, 1.0f), nullptr);
 	this->runAction(sequence);
+	
 }
