@@ -18,8 +18,19 @@ namespace gameobject{
 
 	void GameObject::SetTarget(GameObject *target)
 	{
-		m_pTarget = target;		
+		m_pTarget = target;
 	}
+
+	State GameObject::GetState()
+	{
+		return m_eState;
+	}
+
+	ObjectType GameObject::GetObjectType()
+	{
+		return m_eObjectType;
+	}
+
 
 	GameObject *GameObject::GetTarget()
 	{

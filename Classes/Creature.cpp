@@ -13,7 +13,8 @@ Creature::Creature(Deities deity)
 		m_Sprite = cocos2d::Sprite::create("domeCreature.png");
 	}
 	m_fHealth = 100;
-
+	m_eState = ALIVE;
+	m_eObjectType = CREATURE;
 	Init();
 }
 
@@ -22,12 +23,12 @@ void Creature::Init()
 	float smallestDistance = 99999;	
 	for (int i = 0; i < WorldManager::getInstance()->getGameObects().size(); i++)
 	{
-		float xDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionX() - m_Sprite->getPositionX());
-		float yDist = (WorldManager::getInstance()->getGameObects()[i]->GetSprite()->getPositionY() - m_Sprite->getPositionY());
+		float xDist = (WorldManager::getInstance()->getGameObects().at(i)->GetSprite()->getPositionX() - m_Sprite->getPositionX());
+		float yDist = (WorldManager::getInstance()->getGameObects().at(i)->GetSprite()->getPositionY() - m_Sprite->getPositionY());
 		float distance = sqrt((xDist * xDist) + (yDist * yDist));
-		if (distance < smallestDistance && WorldManager::getInstance()->getGameObects()[i]->GetDeity() != m_Deity)
+		if (distance < smallestDistance && WorldManager::getInstance()->getGameObects().at(i)->GetDeity() != m_Deity && WorldManager::getInstance()->getGameObects().at(i)->GetObjectType() == RITUAL)
 		{
-			m_pTarget = WorldManager::getInstance()->getGameObects()[i].get();
+			m_pTarget = WorldManager::getInstance()->getGameObects().at(i).get();
 			smallestDistance = distance;
 		}
 	}
@@ -36,11 +37,13 @@ void Creature::Init()
 
 void Creature::Update(float dt)
 {
-	if (m_Sprite->getBoundingBox().intersectsRect(m_pTarget->GetSprite()->getBoundingBox()) && m_Sprite->isVisible())
+	if (m_Sprite->getBoundingBox().intersectsRect(m_pTarget->GetSprite()->getBoundingBox()) && m_Sprite->isVisible() && m_pTarget->GetSprite()->isVisible())
 	{
 		Attack();
-		m_Sprite->setVisible(false);
+		m_Sprite->getParent()->removeChild(m_Sprite);
+		m_eState = DEAD;
 	}
+		
 }
 
 void Creature::MoveToTarget()

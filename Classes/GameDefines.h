@@ -78,5 +78,15 @@ typedef enum e_BarTypes {
 
 } BarType;
 
+typedef enum e_State{
+	ALIVE,
+	DEAD
+} State;
+
+typedef enum e_ObjectTypes{
+	RITUAL,
+	CREATURE,
+	TOWER
+} ObjectType;
 
 #endif

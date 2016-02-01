@@ -24,6 +24,9 @@ namespace gameobject{
 		virtual GameObject *GetTarget();
 
 		virtual cocos2d::Sprite *GetSprite();
+		virtual State GetState();
+
+		virtual ObjectType GetObjectType();
 
 	protected:
 		float m_fHealth;
@@ -31,6 +34,8 @@ namespace gameobject{
 		float m_fAttackValue;
 		GameObject *m_pTarget;
 		cocos2d::Sprite *m_Sprite;
+		State m_eState;
+		ObjectType m_eObjectType;
 	};
 
 }

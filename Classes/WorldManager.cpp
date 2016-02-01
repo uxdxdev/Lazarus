@@ -46,9 +46,9 @@ void WorldManager::updateGameObjects(float dt)
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
 		gameObjects.at(i)->Update(dt);
-		if (gameObjects.at(i)->GetSprite()->isVisible() == false)
-		{
-			gameObjects.erase(gameObjects.begin() + i);
+		if (gameObjects.at(i)->GetState() == DEAD)
+		{	
+			gameObjects.erase(gameObjects.begin() + i);					
 			CCLOG("Number of game objects %d", gameObjects.size());
 		}
 	}
