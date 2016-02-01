@@ -34,8 +34,8 @@ namespace bot{
 
 	void TwitchBot::Start()
 	{		
-		m_NetManager->Init(SERVER_URL, SERVER_PORT);
-		//m_NetManager->Init("localhost", "27000");
+		//m_NetManager->Init(SERVER_URL, SERVER_PORT);
+		m_NetManager->Init("localhost", "27000");
 		LoginToChatServer();
 		JoinChannel("JOIN #damortonx\r\n");
 	}
