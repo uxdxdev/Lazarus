@@ -14,6 +14,10 @@ namespace ritual{
 		void Ritual::Animate();
 		void ApplyDamage(float damage);
 		void Update(float dt);
+		cocos2d::CCParticleSystemQuad* GetParticleSystem(){ return m_ParticleSystem; }
+	private:
+		cocos2d::CCParticleSystemQuad* m_ParticleSystem;
+		bool m_bIsParticleOn;
 	};
 
 }

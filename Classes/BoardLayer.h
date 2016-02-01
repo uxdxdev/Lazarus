@@ -35,6 +35,7 @@ public:
 	void TowerDestroyed(Deities deity);
 
 	Cursor* GetCursor(Deities deity);
+	ritual::Ritual *GetRitual(Deities deity);
 
 private:
 	Sprite* _spBoard;

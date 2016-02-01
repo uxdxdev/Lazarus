@@ -17,6 +17,12 @@ namespace ritual{
 		m_fHealth = 100;
 		m_eObjectType = RITUAL;
 		m_eState = ALIVE;
+		m_Sprite->setAnchorPoint(Vec2(0.5f, 0.5f));
+		m_ParticleSystem = cocos2d::CCParticleSystemQuad::create("Flower.plist");		
+		
+		WorldManager::getInstance()->GetGameBoard()->addChild(m_ParticleSystem, 2);
+		m_ParticleSystem->stopSystem(); // turn off particle system
+		m_bIsParticleOn = false;
 		Init();
 	}	
 
@@ -48,6 +54,26 @@ namespace ritual{
 			//WorldManager::getInstance()->GetGameBoard()->removeChild(m_Sprite);
 
 		}
+				
+		// Particle systems
+		if (m_Deity == DOME && WorldManager::getInstance()->getTwitchModel()->getBarCurrent(RITUALBARDOME) == WorldManager::getInstance()->getTwitchModel()->getBarMax(RITUALBARDOME) ||
+			m_Deity == HELIX && WorldManager::getInstance()->getTwitchModel()->getBarCurrent(RITUALBARHELIX) == WorldManager::getInstance()->getTwitchModel()->getBarMax(RITUALBARHELIX))
+		{
+			if (!m_bIsParticleOn)
+			{
+				CCLOG("Particles on for ritual");
+				m_ParticleSystem->resetSystem();
+				m_bIsParticleOn = true;
+			}
+		}
+		else
+		{
+			if (m_bIsParticleOn)
+			{
+				CCLOG("Particles off for ritual");
+				m_ParticleSystem->stopSystem();
+				m_bIsParticleOn = false;
+			}
+		}		
 	}
-
 }

@@ -28,22 +28,30 @@ bool BoardLayer::init()
 		this->addChild(_spBoard);
 	}
 
+	WorldManager::getInstance()->SetGameBoard(this);
+	// Register with the world manager
+	WorldManager::getInstance()->addObserver(this);
+
 	Size boardSize =_spBoard->getContentSize();
+
+	// Helix ritual
 	std::shared_ptr<ritual::Ritual> ritualHelix (new ritual::Ritual(HELIX));
 	helixRitual = std::move(ritualHelix);
 	WorldManager::getInstance()->registerWithWorldManger(helixRitual);
 	helixRitual->GetSprite()->setPosition(
 		(screenSize.width - boardSize.width + helixRitual->GetSprite()->getContentSize().width) * 0.55,
 		screenSize.height * 0.5);
+	helixRitual->GetParticleSystem()->setPosition(helixRitual->GetSprite()->getPosition());
 	this->addChild(helixRitual->GetSprite());
 
+	// Dome ritual
 	std::shared_ptr<ritual::Ritual> ritualDome(new ritual::Ritual(DOME));
 	domeRitual = std::move(ritualDome);
 	WorldManager::getInstance()->registerWithWorldManger(domeRitual);
-
 	domeRitual->GetSprite()->setPosition(
 		(screenSize.width + boardSize.width - domeRitual->GetSprite()->getContentSize().width) * 0.48,
 		screenSize.height * 0.5);
+	domeRitual->GetParticleSystem()->setPosition(domeRitual->GetSprite()->getPosition());
 	this->addChild(domeRitual->GetSprite());
 
 	helixCursor = Cursor::create(HELIX);
@@ -68,10 +76,7 @@ bool BoardLayer::init()
 	
 	m_iNumberOfTowersSpawnedHelix = 0;
 	m_iNumberOfTowersSpawnedDome = 0;
-
-	// Register with the world manager
-	WorldManager::getInstance()->SetGameBoard(this);
-	WorldManager::getInstance()->addObserver(this);
+	
 
 
 	return true;
@@ -94,10 +99,12 @@ void BoardLayer::TowerDestroyed(Deities deity)
 	if (deity == HELIX)
 	{
 		m_iNumberOfTowersSpawnedHelix--;
+		CCLOG("Helix towers %d", m_iNumberOfTowersSpawnedHelix);
 	}
 	else if (deity == DOME)
 	{
 		m_iNumberOfTowersSpawnedDome--;
+		CCLOG("Dome towers %d", m_iNumberOfTowersSpawnedDome);
 	}
 }
 
@@ -112,6 +119,19 @@ Cursor* BoardLayer::GetCursor(Deities deity)
 		return domeCursor;
 	}
 }
+
+ritual::Ritual *BoardLayer::GetRitual(Deities deity)
+{
+	if (deity == HELIX)
+	{
+		return helixRitual.get();
+	}
+	else if (deity == DOME)
+	{
+		return domeRitual.get();
+	}
+}
+
 
 
 
@@ -138,12 +158,7 @@ void BoardLayer::onNotify(std::shared_ptr<TwitchEvent> tEvent)
 				break;
 			}
 
-			auto move = cocos2d::MoveBy::create(0.05f * ACTION_SPEED, Vec2(10.0f, 0));
-			auto moveUp = cocos2d::MoveBy::create(0.05f * ACTION_SPEED, Vec2(0, 10.0f));
-			auto moveBack = move->reverse();
-			auto moveDown = moveUp->reverse();
-			auto sequence = cocos2d::Sequence::create(move, moveBack, moveBack->clone(), move->clone(), moveUp, moveDown, moveDown->clone(), moveUp->clone(), nullptr);
-			this->runAction(sequence);
+			
 		}
 	}
 
@@ -363,9 +378,18 @@ void BoardLayer::update(float dt)
 	{
 		m_bCanSpawnTowerHelix = false;
 	}
-	else if (m_iNumberOfTowersSpawnedDome > 2)
+	else
+	{
+		m_bCanSpawnTowerHelix = true;
+	}
+
+	if (m_iNumberOfTowersSpawnedDome > 2)
 	{
 		m_bCanSpawnTowerDome = false;
+	}
+	else
+	{
+		m_bCanSpawnTowerDome = true;
 	}
 
 	

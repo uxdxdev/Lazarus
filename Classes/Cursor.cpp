@@ -1,5 +1,5 @@
 #include "Cursor.h"
-
+#include "WorldManager.h"
 
 USING_NS_CC;
 
@@ -179,7 +179,40 @@ void Cursor::randomeMove()
 
 void Cursor::attack()
 {
-	auto sequence = Sequence::create(ScaleTo::create(0.5f, 2.0f), ScaleTo::create(0.5f, 1.0f), nullptr);
-	this->runAction(sequence);
 	
+	bool attackSuccess = false;
+
+	if (m_deity == HELIX && WorldManager::getInstance()->getTwitchModel()->getBarCurrent(ZAPBARHELIX) == WorldManager::getInstance()->getTwitchModel()->getBarMax(ZAPBARHELIX))
+	{
+		// Halve the other teams ritual
+		WorldManager::getInstance()->getTwitchModel()->setBarCurrent(RITUALBARDOME, WorldManager::getInstance()->getTwitchModel()->getBarCurrent(RITUALBARDOME) * 0.5f);
+
+		// Reset attack
+		WorldManager::getInstance()->getTwitchModel()->setBarCurrent(ZAPBARHELIX, 0.0f);
+
+		attackSuccess = true;
+	}
+	else if (m_deity == DOME && WorldManager::getInstance()->getTwitchModel()->getBarCurrent(ZAPBARDOME) == WorldManager::getInstance()->getTwitchModel()->getBarMax(ZAPBARDOME))
+	{
+		// Halve the other teams ritual
+		WorldManager::getInstance()->getTwitchModel()->setBarCurrent(RITUALBARHELIX, WorldManager::getInstance()->getTwitchModel()->getBarCurrent(RITUALBARHELIX) * 0.5f);
+
+		// Reset attack
+		WorldManager::getInstance()->getTwitchModel()->setBarCurrent(ZAPBARDOME, 0.0f);
+		attackSuccess = true;
+	}
+
+	if (attackSuccess)
+	{
+		auto sequence = Sequence::create(ScaleTo::create(0.5f, 2.0f), ScaleTo::create(0.5f, 1.0f), nullptr);
+		this->runAction(sequence);
+
+		auto move = cocos2d::MoveBy::create(0.05f * ACTION_SPEED, Vec2(10.0f, 0));
+		auto moveUp = cocos2d::MoveBy::create(0.05f * ACTION_SPEED, Vec2(0, 10.0f));
+		auto moveBack = move->reverse();
+		auto moveDown = moveUp->reverse();
+		auto shakeSequence = cocos2d::Sequence::create(move, moveBack, moveBack->clone(), move->clone(), moveUp, moveDown, moveDown->clone(), moveUp->clone(), nullptr);
+		WorldManager::getInstance()->GetGameBoard()->runAction(shakeSequence);
+	}
+		
 }
