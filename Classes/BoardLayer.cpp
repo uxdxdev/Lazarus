@@ -6,6 +6,10 @@
 
 USING_NS_CC;
 
+BoardLayer::~BoardLayer()
+{	
+}
+
 bool BoardLayer::init()
 {
 	//////////////////////////////
@@ -96,6 +100,19 @@ void BoardLayer::TowerDestroyed(Deities deity)
 		m_iNumberOfTowersSpawnedDome--;
 	}
 }
+
+Cursor* BoardLayer::GetCursor(Deities deity)
+{
+	if (deity == HELIX)
+	{
+		return helixCursor;
+	}
+	else if (deity == DOME)
+	{
+		return domeCursor;
+	}
+}
+
 
 
 
@@ -276,7 +293,7 @@ void BoardLayer::spawnDome()
 		//get cursor position
 		//spawn dome 
 		std::shared_ptr<Creature> spawned(new Creature(Deities::DOME));
-		spawned->GetSprite()->setPosition(domeRitual->GetSprite()->getPosition());
+		//spawned->GetSprite()->setPosition(domeRitual->GetSprite()->getPosition());
 		this->addChild(spawned->GetSprite());
 		//register with world manager
 		WorldManager::getInstance()->registerWithWorldManger(spawned);
@@ -291,7 +308,7 @@ void BoardLayer::spawnHelix()
 		//get cursor position
 		//spawn helix
 		std::shared_ptr<Creature> spawned(new Creature(Deities::HELIX));
-		spawned->GetSprite()->setPosition(helixRitual->GetSprite()->getPosition());
+		//spawned->GetSprite()->setPosition(helixRitual->GetSprite()->getPosition());
 		this->addChild(spawned->GetSprite());
 		//register with world manager
 		WorldManager::getInstance()->registerWithWorldManger(spawned);

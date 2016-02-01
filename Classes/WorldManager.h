@@ -28,7 +28,7 @@ public:
 	vector<std::shared_ptr<gameobject::GameObject>> getGameObects(){
 		return gameObjects;
 	}
-
+	
 	void SetGameBoard(BoardLayer *board);
 	BoardLayer *GetGameBoard();
 

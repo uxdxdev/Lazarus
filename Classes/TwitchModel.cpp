@@ -71,6 +71,15 @@ shared_ptr<TwitchPlayer> TwitchModel::registerPlayer(shared_ptr<string> pname, D
 	{
 		playerCheck = TwitchPlayer::create(pname, pSavior);
 		playerList.push_back(playerCheck);
+
+		if (pSavior == HELIX)
+		{
+			m_iHelixPlayers++;
+		}
+		else if (pSavior == DOME)
+		{
+			m_iDomePlayers++;
+		}
 		
 		
 	}
@@ -81,28 +90,29 @@ shared_ptr<TwitchPlayer> TwitchModel::registerPlayer(shared_ptr<string> pname, D
 void TwitchModel::initBars()
 {
 	zapBarHelix.current = 0.f;
-	zapBarHelix.max = 50.f;
+	zapBarHelix.max = ZAP_MAX;
 	zapBarHelix.saviour = HELIX;
 	spawnBarHelix.current = 0.f;
-	spawnBarHelix.max = 20.f;
+	spawnBarHelix.max = SPAWN_MAX;
 	spawnBarHelix.saviour = HELIX;
 	towerBarHelix.current = 0.f;
-	towerBarHelix.max = 20.f;
+	towerBarHelix.max = TOWER_MAX;
 	towerBarHelix.saviour = HELIX;
 	ritualBarHelix.current = 0.f;
-	ritualBarHelix.max = 500.f;
+	ritualBarHelix.max = RITUAL_MAX;
 	ritualBarHelix.saviour = HELIX;
+
 	zapBarDome.current = 0.f;
-	zapBarDome.max = 50.f;
+	zapBarDome.max = ZAP_MAX;
 	zapBarDome.saviour = DOME;
 	spawnBarDome.current = 0.f;
-	spawnBarDome.max = 20.f;
+	spawnBarDome.max = SPAWN_MAX;
 	spawnBarDome.saviour = DOME;
 	towerBarDome.current = 0.f;
-	towerBarDome.max = 20.f;
+	towerBarDome.max = TOWER_MAX;
 	towerBarDome.saviour = DOME;
 	ritualBarDome.current = 0.f;
-	ritualBarDome.max = 500.f;
+	ritualBarDome.max = RITUAL_MAX;
 	ritualBarDome.saviour = DOME;
 
 }
@@ -160,6 +170,8 @@ bool TwitchModel::init()
 	//chantBarHelix.current = 
 	initBars();
 
+	m_iHelixPlayers = 0;
+	m_iDomePlayers = 0;
 	return true;
 }
 
@@ -185,25 +197,25 @@ void TwitchModel::increaseBar(TwitchEventType teType, shared_ptr<string> pname)
 		case HELIX:
 			if (teType == CHANTEVENT) {
 				if (ritualBarHelix.current < ritualBarHelix.max) {
-					ritualBarHelix.current += ritualBarHelix.max * 0.1;
+					ritualBarHelix.current += INPUT_AMOUNT;
 					CCLOG("ritualBar Helix up! now %f", ritualBarHelix.current);
 				}
 			}
 			if (teType == TOWEREVENT) {
 				if (towerBarHelix.current < towerBarHelix.max) {
-					towerBarHelix.current += towerBarHelix.max * 0.1;
+					towerBarHelix.current += INPUT_AMOUNT;
 					CCLOG("towerbar Helix up! now %f", towerBarHelix.current);
 				}
 			}
 			if (teType == ZAPEVENT) {
 				if (zapBarHelix.current < zapBarHelix.max) {
-					zapBarHelix.current += zapBarHelix.max * 0.1;
+					zapBarHelix.current += INPUT_AMOUNT;
 					CCLOG("zapBar Helix up! now %f", zapBarHelix.current);
 				}
 			}
 			if (teType == SPAWNEVENT) {
 				if (spawnBarHelix.current < spawnBarHelix.max) {
-					spawnBarHelix.current += spawnBarHelix.max * 0.1;
+					spawnBarHelix.current += INPUT_AMOUNT;
 					CCLOG("spawnBar Helix up! now %f", spawnBarHelix.current);
 				}
 			}
@@ -211,25 +223,25 @@ void TwitchModel::increaseBar(TwitchEventType teType, shared_ptr<string> pname)
 		case DOME:
 			if (teType == CHANTEVENT) {
 				if (ritualBarDome.current < ritualBarDome.max) {
-					ritualBarDome.current += ritualBarDome.max * 0.1;
+					ritualBarDome.current += INPUT_AMOUNT;
 					CCLOG("ritualBar Dome up!");
 				}
 			}
 			if (teType == TOWEREVENT) {
 				if (towerBarDome.current < towerBarDome.max){
-					towerBarDome.current += towerBarDome.max * 0.1;
+					towerBarDome.current += INPUT_AMOUNT;
 					CCLOG("towerBar Dome up!");
 				}
 			}
 			if (teType == ZAPEVENT) {
 				if (zapBarDome.current < zapBarDome.max) {
-					zapBarDome.current += zapBarDome.max * 0.1;
+					zapBarDome.current += INPUT_AMOUNT;
 					CCLOG("zapBar Dome up!");
 				}
 			}
 			if (teType == SPAWNEVENT) {
 				if (spawnBarDome.current < spawnBarDome.max) {
-					spawnBarDome.current += spawnBarDome.max * 0.1;
+					spawnBarDome.current += INPUT_AMOUNT;
 					CCLOG("spawnBar Helix up!");
 				}
 			}

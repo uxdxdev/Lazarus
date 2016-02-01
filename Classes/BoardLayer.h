@@ -18,6 +18,8 @@ public:
 
 	CREATE_FUNC(BoardLayer);
 
+	~BoardLayer();
+
 	Size getBoardSize(){ return _spBoard->getContentSize(); }
 
 	virtual void onNotify(std::shared_ptr<TwitchEvent> tEvent);
@@ -32,7 +34,7 @@ public:
 	void SetCreatureSpawned(Deities deity, bool value);
 	void TowerDestroyed(Deities deity);
 
-	
+	Cursor* GetCursor(Deities deity);
 
 private:
 	Sprite* _spBoard;

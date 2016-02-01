@@ -58,6 +58,11 @@ public:
 	//TODO clear all players and counters
 
 
+	int GetPlayerCount(Deities deity)
+	{
+		return m_iHelixPlayers; 
+	}
+
 private:
 	topbar *getBar(BarType bartype);
 	string name;
@@ -72,6 +77,8 @@ private:
 
 	void increaseBar(TwitchEventType teType, shared_ptr<string> pname);
 	
+	int m_iHelixPlayers;
+	int m_iDomePlayers;
 };
 
 

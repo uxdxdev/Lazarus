@@ -18,6 +18,12 @@ typedef struct LinePointJames
 #define SERVER_URL "irc.twitch.tv"
 #define SERVER_PORT "6667"
 
+// Chat input values
+#define INPUT_AMOUNT 1.0f
+#define ZAP_MAX 5.0f
+#define SPAWN_MAX 10.0f
+#define TOWER_MAX 15.0f
+#define RITUAL_MAX 20.0f
 
 typedef enum e_Deities {
 	HELIX,

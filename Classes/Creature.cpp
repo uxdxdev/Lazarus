@@ -17,6 +17,8 @@ Creature::Creature(Deities deity)
 	m_eState = ALIVE;
 	m_eObjectType = CREATURE;
 	m_pTarget = nullptr;
+	m_Sprite->setPosition(WorldManager::getInstance()->GetGameBoard()->GetCursor(m_Deity)->getPosition());
+
 	Init();
 }
 
@@ -28,6 +30,8 @@ void Creature::Init()
 		float xDist = (WorldManager::getInstance()->getGameObects().at(i)->GetSprite()->getPositionX() - m_Sprite->getPositionX());
 		float yDist = (WorldManager::getInstance()->getGameObects().at(i)->GetSprite()->getPositionY() - m_Sprite->getPositionY());
 		float distance = sqrt((xDist * xDist) + (yDist * yDist));
+
+		//float distance = cocos2d::ccpDistance(WorldManager::getInstance()->getGameObects().at(i)->GetSprite()->getPosition(), m_Sprite->getPosition());
 		if (distance < smallestDistance && WorldManager::getInstance()->getGameObects().at(i)->GetDeity() != m_Deity && WorldManager::getInstance()->getGameObects().at(i)->GetObjectType() != CREATURE)
 		{
 			m_pTarget = WorldManager::getInstance()->getGameObects().at(i).get();
@@ -43,13 +47,27 @@ void Creature::Init()
 
 void Creature::Update(float dt)
 {	
-	if (m_Sprite->getBoundingBox().intersectsRect(m_pTarget->GetSprite()->getBoundingBox()))
+	if (m_pTarget != nullptr)
 	{
-		Attack();			
-		m_Sprite->getParent()->removeChild(m_Sprite); // kill this creature
-		m_eState = DEAD;
-		WorldManager::getInstance()->GetGameBoard()->SetCreatureSpawned(m_Deity, false);
-	}	
+		if (m_Sprite->getBoundingBox().intersectsRect(m_pTarget->GetSprite()->getBoundingBox()))
+		{
+			Attack();
+			m_Sprite->getParent()->removeChild(m_Sprite); // kill this creature
+			m_eState = DEAD;
+			WorldManager::getInstance()->GetGameBoard()->SetCreatureSpawned(m_Deity, false);
+			if (m_pTarget->GetObjectType() == RITUAL)
+			{
+				if (m_Deity == HELIX)
+				{
+					WorldManager::getInstance()->getTwitchModel()->setBarCurrent(RITUALBARDOME, 0.0f);
+				}
+				else if (m_Deity == DOME)
+				{
+					WorldManager::getInstance()->getTwitchModel()->setBarCurrent(RITUALBARHELIX, 0.0f);
+				}				
+			}
+		}
+	}
 }
 
 void Creature::MoveToTarget()
