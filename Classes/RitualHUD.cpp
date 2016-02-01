@@ -100,42 +100,42 @@ void RitualHUD::initDeity(Deities deity)
 
 void RitualHUD::update(float dt)
 {
-	int current, max;
+	float current, max;
 	switch (_eDeity)
 	{
 	case HELIX:
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(RITUALBARHELIX);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(RITUALBARHELIX);
-		_spRitualBar->setScaleX(float(current * 100 / max));
+		_spRitualBar->setScaleX(1.0f * float(current / max));
 
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(TOWERBARHELIX);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(TOWERBARHELIX);
-		_spTowerBar->setScaleX(float(current * 100 / max));
+		_spTowerBar->setScaleX(1.0f * float(current / max));
 
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(SPAWNBARHELIX);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(SPAWNBARHELIX);
-		_spSpawnBar->setScaleX(float(current * 100 / max));
+		_spSpawnBar->setScaleX(1.0f * float(current / max));
 
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(ZAPBARHELIX);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(ZAPBARHELIX);
-		_spZapBar->setScaleX(float(current * 100 / max));
+		_spZapBar->setScaleX(1.0f * (current / max));
 		break;
 	case DOME:
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(RITUALBARDOME);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(RITUALBARDOME);
-		_spRitualBar->setScaleX(float(current * 100 / max));
+		_spRitualBar->setScaleX(1.0f * float(current / max));
 
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(TOWERBARDOME);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(TOWERBARDOME);
-		_spTowerBar->setScaleX(float(current * 100 / max));
+		_spTowerBar->setScaleX(1.0f * float(current / max));
 
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(SPAWNBARDOME);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(SPAWNBARDOME);
-		_spSpawnBar->setScaleX(float(current * 100 / max));
+		_spSpawnBar->setScaleX(1.0f * float(current / max));
 
 		current = WorldManager::getInstance()->getTwitchModel()->getBarCurrent(ZAPBARDOME);
 		max = WorldManager::getInstance()->getTwitchModel()->getBarMax(ZAPBARDOME);
-		_spZapBar->setScaleX(float(current * 100 / max));
+		_spZapBar->setScaleX(1.0f * float(current / max));
 		break;
 	default:
 		break;
