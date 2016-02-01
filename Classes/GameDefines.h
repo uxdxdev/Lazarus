@@ -24,25 +24,6 @@ typedef enum e_Deities {
 	DOME
 } Deities;
 
-
-typedef struct topbar{
-
-
-	float current;
-	void setCurrent(float  setcurrent){
-		current = setcurrent;
-	}
-	float max;
-	void setMax(float setMax){
-		max = setMax;
-	}
-	void setsaviour(Deities setsaviour){
-		saviour = setsaviour;
-	}
-	Deities saviour;
-}topbar;
-
-
 typedef enum e_Directions {
 	UP,
 	DOWN,

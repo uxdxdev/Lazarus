@@ -29,11 +29,20 @@ public:
 	void TowerHelix();
 	void TowerDome();
 
+	void SetCreatureSpawned(Deities deity, bool value);
+	void TowerDestroyed(Deities deity);
 
 	
 
 private:
 	Sprite* _spBoard;
+	bool m_bIsCreatureSpawnedHelix;
+	bool m_bIsCreatureSpawnedDome;
+	bool m_bCanSpawnTowerHelix;
+	bool m_bCanSpawnTowerDome;
+
+	int m_iNumberOfTowersSpawnedHelix;
+	int m_iNumberOfTowersSpawnedDome;
 
 	Cursor* helixCursor;
 	Cursor* domeCursor;

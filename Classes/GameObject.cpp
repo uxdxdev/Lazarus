@@ -26,6 +26,11 @@ namespace gameobject{
 		return m_eState;
 	}
 
+	void GameObject::SetState(State state)
+	{
+		m_eState = state;
+	}
+
 	ObjectType GameObject::GetObjectType()
 	{
 		return m_eObjectType;

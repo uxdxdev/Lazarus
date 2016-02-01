@@ -24,6 +24,8 @@ namespace gameobject{
 		virtual GameObject *GetTarget();
 
 		virtual cocos2d::Sprite *GetSprite();
+
+		virtual void SetState(State state);
 		virtual State GetState();
 
 		virtual ObjectType GetObjectType();

@@ -50,15 +50,15 @@ bool GameScene::init()
 	//this->addChild(lablayer);
 
 	m_pBoardLayer = BoardLayer::create();
-	this->addChild(m_pBoardLayer);
+	this->addChild(m_pBoardLayer, 1);
 
 	m_pHelixHUD = RitualHUD::create();
 	m_pHelixHUD->initDeity(HELIX);
-	this->addChild(m_pHelixHUD);
+	this->addChild(m_pHelixHUD, 2);
 
 	m_pDomeHUD = RitualHUD::create();
 	m_pDomeHUD->initDeity(DOME);
-	this->addChild(m_pDomeHUD);
+	this->addChild(m_pDomeHUD, 2);
 	    
     
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("sound/background.wav", true);

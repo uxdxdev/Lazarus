@@ -3,12 +3,12 @@
 
 #include "GameObject.h"
 
-namespace tower{
 
-	class Tower : public gameobject::GameObject{
-	public:
+class Tower : public gameobject::GameObject{
+public:
+	Tower::Tower(Deities deity);
+	void Update(float dt);
+};
 
-	};
 
-}
 #endif

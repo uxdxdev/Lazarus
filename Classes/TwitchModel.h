@@ -7,6 +7,26 @@
 
 using namespace std;
 
+typedef struct topbar{
+
+public:
+	void setCurrent(float  setcurrent){
+		current = setcurrent;
+		CCLOG("Current reset to %f", current);
+	}
+
+	void setMax(float setMax){
+		max = setMax;
+	}
+	void setsaviour(Deities setsaviour){
+		saviour = setsaviour;
+	}
+
+	float max;
+	float current;
+	Deities saviour;
+}topbar;
+
 class TwitchModel : public Observer
 {
 public:
@@ -30,16 +50,16 @@ public:
 
 	void initBars();
 	
-	unsigned int getBarCurrent(BarType bartype);
-	unsigned int getBarMax(BarType bartype);
-	void setBarCurrent(BarType bartype, unsigned int currentset);
-	void setBarMax(BarType bartype, unsigned int maxset);
+	float getBarCurrent(BarType bartype);
+	float getBarMax(BarType bartype);
+	void setBarCurrent(BarType bartype, float currentset);
+	void setBarMax(BarType bartype, float maxset);
 
 	//TODO clear all players and counters
 
 
 private:
-	topbar getBar(BarType bartype);
+	topbar *getBar(BarType bartype);
 	string name;
 	topbar zapBarHelix;
 	topbar spawnBarHelix;

@@ -16,6 +16,7 @@ namespace ritual{
 
 		m_fHealth = 100;
 		m_eObjectType = RITUAL;
+		m_eState = ALIVE;
 		Init();
 	}	
 
@@ -43,7 +44,9 @@ namespace ritual{
 	{
 		if (m_fHealth < 0)
 		{
-			WorldManager::getInstance()->GetGameBoard()->removeChild(m_Sprite);
+			// Reduce this sides ritual value
+			//WorldManager::getInstance()->GetGameBoard()->removeChild(m_Sprite);
+
 		}
 	}
 

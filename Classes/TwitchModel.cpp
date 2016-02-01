@@ -108,50 +108,50 @@ void TwitchModel::initBars()
 }
 
 
-topbar TwitchModel::getBar(BarType bartype){
+topbar *TwitchModel::getBar(BarType bartype){
 
 	switch (bartype)
 	{
 	case SPAWNBARHELIX:
-		return spawnBarHelix;
+		return &spawnBarHelix;
 		break;
 	case TOWERBARHELIX:
-		return towerBarHelix;
+		return &towerBarHelix;
 		break;
 	case RITUALBARHELIX:
-		return ritualBarHelix;
+		return &ritualBarHelix;
 		break;
 	case ZAPBARHELIX:
-		return zapBarHelix;
+		return &zapBarHelix;
 
 	case SPAWNBARDOME:
-		return spawnBarDome; 
+		return &spawnBarDome; 
 		break;
 	case TOWERBARDOME:
-		return towerBarDome;
+		return &towerBarDome;
 		break;
 	case RITUALBARDOME:
-		return ritualBarDome;
+		return &ritualBarDome;
 		break;
 	case ZAPBARDOME:
-		return zapBarDome;
+		return &zapBarDome;
 	default:
 		
 		break;
 	}
 }
-unsigned int TwitchModel::getBarCurrent(BarType bartype){
-	return getBar(bartype).current;
+float TwitchModel::getBarCurrent(BarType bartype){
+	return getBar(bartype)->current;
 }
-unsigned int TwitchModel::getBarMax(BarType bartype){
-	return getBar(bartype).max;
+float TwitchModel::getBarMax(BarType bartype){
+	return getBar(bartype)->max;
 }
-void TwitchModel::setBarCurrent(BarType bartype, unsigned int currentset){
+void TwitchModel::setBarCurrent(BarType bartype, float currentset){
 	
-	getBar(bartype).setCurrent(currentset);
+	getBar(bartype)->setCurrent(currentset);
 }
-void TwitchModel::setBarMax(BarType bartype, unsigned int maxset){
-	getBar(bartype).setMax(maxset);
+void TwitchModel::setBarMax(BarType bartype, float maxset){
+	getBar(bartype)->setMax(maxset);
 }
 
 bool TwitchModel::init()
@@ -216,20 +216,20 @@ void TwitchModel::increaseBar(TwitchEventType teType, shared_ptr<string> pname)
 				}
 			}
 			if (teType == TOWEREVENT) {
-				if (ritualBarDome.current < ritualBarDome.max){
-					ritualBarDome.current += ritualBarDome.max * 0.1;
+				if (towerBarDome.current < towerBarDome.max){
+					towerBarDome.current += towerBarDome.max * 0.1;
 					CCLOG("towerBar Dome up!");
 				}
 			}
 			if (teType == ZAPEVENT) {
-				if (ritualBarDome.current < ritualBarDome.max) {
-					ritualBarDome.current += ritualBarDome.max * 0.1;
+				if (zapBarDome.current < zapBarDome.max) {
+					zapBarDome.current += zapBarDome.max * 0.1;
 					CCLOG("zapBar Dome up!");
 				}
 			}
 			if (teType == SPAWNEVENT) {
-				if (ritualBarDome.current < ritualBarDome.max) {
-					ritualBarDome.current += ritualBarDome.max * 0.1;
+				if (spawnBarDome.current < spawnBarDome.max) {
+					spawnBarDome.current += spawnBarDome.max * 0.1;
 					CCLOG("spawnBar Helix up!");
 				}
 			}

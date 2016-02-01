@@ -13,8 +13,10 @@ Creature::Creature(Deities deity)
 		m_Sprite = cocos2d::Sprite::create("domeCreature.png");
 	}
 	m_fHealth = 100;
+	m_fAttackValue = 100;
 	m_eState = ALIVE;
 	m_eObjectType = CREATURE;
+	m_pTarget = nullptr;
 	Init();
 }
 
@@ -26,7 +28,7 @@ void Creature::Init()
 		float xDist = (WorldManager::getInstance()->getGameObects().at(i)->GetSprite()->getPositionX() - m_Sprite->getPositionX());
 		float yDist = (WorldManager::getInstance()->getGameObects().at(i)->GetSprite()->getPositionY() - m_Sprite->getPositionY());
 		float distance = sqrt((xDist * xDist) + (yDist * yDist));
-		if (distance < smallestDistance && WorldManager::getInstance()->getGameObects().at(i)->GetDeity() != m_Deity && WorldManager::getInstance()->getGameObects().at(i)->GetObjectType() == RITUAL)
+		if (distance < smallestDistance && WorldManager::getInstance()->getGameObects().at(i)->GetDeity() != m_Deity && WorldManager::getInstance()->getGameObects().at(i)->GetObjectType() != CREATURE)
 		{
 			m_pTarget = WorldManager::getInstance()->getGameObects().at(i).get();
 			smallestDistance = distance;
@@ -40,14 +42,14 @@ void Creature::Init()
 }
 
 void Creature::Update(float dt)
-{
-	if (m_Sprite->getBoundingBox().intersectsRect(m_pTarget->GetSprite()->getBoundingBox()) && m_Sprite->isVisible() && m_pTarget->GetSprite()->isVisible())
+{	
+	if (m_Sprite->getBoundingBox().intersectsRect(m_pTarget->GetSprite()->getBoundingBox()))
 	{
-		Attack();
-		m_Sprite->getParent()->removeChild(m_Sprite);
+		Attack();			
+		m_Sprite->getParent()->removeChild(m_Sprite); // kill this creature
 		m_eState = DEAD;
-	}
-		
+		WorldManager::getInstance()->GetGameBoard()->SetCreatureSpawned(m_Deity, false);
+	}	
 }
 
 void Creature::MoveToTarget()
@@ -55,7 +57,7 @@ void Creature::MoveToTarget()
 	if (m_pTarget != nullptr)
 	{
 		// Move to target
-		auto moveAction = cocos2d::MoveTo::create(4.0f * ACTION_SPEED, m_pTarget->GetSprite()->getPosition());
+		auto moveAction = cocos2d::MoveTo::create(20.0f * ACTION_SPEED, m_pTarget->GetSprite()->getPosition());
 		auto easeInOut = cocos2d::EaseInOut::create(moveAction->clone(), 2.0f);
 		//auto delay = cocos2d::DelayTime::create(4.0f * ACTION_SPEED);
 		//auto attack = cocos2d::CallFunc::create(std::bind(&Creature::Attack, this));
