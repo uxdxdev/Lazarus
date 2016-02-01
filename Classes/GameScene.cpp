@@ -2,6 +2,8 @@
 #include "BoardLayer.h"
 
 #include "RitualHUD.h"
+#include "SimpleAudioEngine.h"  
+
 
 USING_NS_CC;
 
@@ -59,9 +61,13 @@ bool GameScene::init()
 	this->addChild(m_pDomeHUD);
 	    
     
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("sound/background.wav", true);
+
 	std::unique_ptr<bot::TwitchBot> twitchBot(new bot::TwitchBot("NICK damortonx\r\n", "USER damortonx\r\n", "PASS oauth:9z8neimcarxcdtq241w02l7bzyfozx\r\n"));
 	m_TwitchBot = std::move(twitchBot);
 	this->scheduleUpdate();
+
+
 
     return true;
 }
