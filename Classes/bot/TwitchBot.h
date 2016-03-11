@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include "GameDefines.h"
+#include "WorldManager.h"
 #include "net\NetManager.h"
 
 #define MAX_BUFFER_SIZE 255
@@ -30,6 +32,7 @@ namespace bot{
 
 		std::unique_ptr<net::NetManager> m_NetManager;
 		
+		WorldManager *m_WorldManager;
 	 	char m_cSendBuffer[MAX_BUFFER_SIZE];
 		char m_cRecvBuffer[MAX_BUFFER_SIZE];
 

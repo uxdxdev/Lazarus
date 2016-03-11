@@ -145,18 +145,45 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\bot\TwitchBot.cc" />
+    <ClCompile Include="..\Classes\BoardLayer.cpp" />
+    <ClCompile Include="..\Classes\Creature.cpp" />
+    <ClCompile Include="..\Classes\Cursor.cpp" />
+    <ClCompile Include="..\Classes\GameObject.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
+    <ClCompile Include="..\Classes\LabRoom.cpp" />
+    <ClCompile Include="..\Classes\bot\TwitchBot.cc" />
     <ClCompile Include="..\Classes\net\NetManager.cc" />
+    <ClCompile Include="..\Classes\Ritual.cpp" />
+    <ClCompile Include="..\Classes\RitualHUD.cpp" />
     <ClCompile Include="..\Classes\socket\socket.c" />
+    <ClCompile Include="..\Classes\Tower.cpp" />
+    <ClCompile Include="..\Classes\TwitchEvent.cpp" />
+    <ClCompile Include="..\Classes\TwitchModel.cpp" />
+    <ClCompile Include="..\Classes\TwitchPlayer.cpp" />
+    <ClCompile Include="..\Classes\WorldManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\bot\TwitchBot.h" />
+    <ClInclude Include="..\Classes\BoardLayer.h" />
+    <ClInclude Include="..\Classes\Creature.h" />
+    <ClInclude Include="..\Classes\Cursor.h" />
+    <ClInclude Include="..\Classes\GameDefines.h" />
+    <ClInclude Include="..\Classes\GameObject.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
+    <ClInclude Include="..\Classes\LabRoom.h" />
+    <ClInclude Include="..\Classes\Observer.h" />
+    <ClInclude Include="..\Classes\Ritual.h" />
+    <ClInclude Include="..\Classes\RitualHUD.h" />
+    <ClInclude Include="..\Classes\Subject.h" />
+    <ClInclude Include="..\Classes\bot\TwitchBot.h" />
     <ClInclude Include="..\Classes\net\NetManager.h" />
     <ClInclude Include="..\Classes\socket\socket.h" />
+    <ClInclude Include="..\Classes\Tower.h" />
+    <ClInclude Include="..\Classes\TwitchEvent.h" />
+    <ClInclude Include="..\Classes\TwitchModel.h" />
+    <ClInclude Include="..\Classes\TwitchPlayer.h" />
+    <ClInclude Include="..\Classes\WorldManager.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
