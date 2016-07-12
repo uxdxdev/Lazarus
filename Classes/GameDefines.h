@@ -19,11 +19,11 @@ typedef struct LinePointJames
 #define SERVER_PORT "6667"
 
 // Chat input values
-#define INPUT_AMOUNT 100.0f
-#define ZAP_MAX 1000.0f
+#define INPUT_AMOUNT 10.0f
+#define ZAP_MAX 500.0f
 #define SPAWN_MAX 100.0f
-#define TOWER_MAX 150.0f
-#define RITUAL_MAX 500.0f
+#define TOWER_MAX 100.0f
+#define RITUAL_MAX 300.0f
 
 typedef enum e_Deities {
 	HELIX,
